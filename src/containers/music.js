@@ -11,13 +11,13 @@ class App extends Component {
     const { dispatch } = this.props
     dispatch(homeAPI())
   }
-// <Slider data={data.slider} />
+
   render() {
     const { dispatch,data,login } = this.props
     return (
       <div className='root'>
 
-        <div className="header">
+        <div className="header"  style={{backgroundColor:'#ce3d3e',color:'#fff'}}>
           我的音乐
         </div>
 

@@ -17,12 +17,12 @@ class App extends Component {
     return (
       <div className='root'>
 
-        <div className="header">
+        <div className="header"  style={{backgroundColor:'#ce3d3e',color:'#fff'}}>
           帐号
         </div>
 
         <div className="container">
-          
+          暂未开发
         </div>
 
         <Nav/>
