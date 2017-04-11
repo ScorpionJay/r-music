@@ -1,55 +1,11 @@
 @import "./common";
 @import "./slider";
-@import "./home";
-@import "./login";
-@import "./404";
-@import "./pagination";
-
-
-body{min-height:100%;position:relative;-webkit-text-size-adjust:none; min-width: 1000px;
-font-family: Helvetica,Arial,"Microsoft YaHei","Droid Sans",sans-serif;}
-
-
-.slick-slide img {
-    display: block;
- /*    width:100%;
-     height:100%;
-max-width: 100%;
-height: auto; */
-}
-
-
-@for $i from 1 to 4 {
-	  nav a:nth-child(#{$i}) span { 
-	  	background-position: 0px -25*($i - 1)+px; 
-	  }
-
-	  nav a:nth-child(#{$i}).active span { 
-	  	background-position: -25px -25*($i - 1)+px; 
-	  }
-}
-
-.features {
-	display:flex;
-	justify-content: space-between;
-	margin: 0 0 10px 0;
-    background-color: #fff;
-    border-bottom: solid 1px #e1e1e1;
-    padding: 15px 0px;
 
 
 
 
-	// 循环
-	@for $i from 2 to 5 {
-	  li:nth-child(#{$i}) i{ 
-	  	background-position: center -35*($i - 1)+px; 
-	  }
-	}
 
-	div {
-			color:#333;
-	}
-}
+
+
 
 

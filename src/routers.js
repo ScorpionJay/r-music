@@ -17,6 +17,28 @@ const Routes = {
 			})
 		   }
 		},
+		{ path: 'music',
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/music').default)
+			})
+		   }
+		},
+		{ path: 'friend',
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/friend').default)
+			})
+		   }
+		},
+		{ path: 'account',
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/account').default)
+			})
+		   }
+		},
+
 		{ path: 'login/:page', 
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{

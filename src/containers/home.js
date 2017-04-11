@@ -4,38 +4,30 @@ import { homeAPI } from '../actions/home'
 
 import Slider from '../components/home/slider'
 
-import Nav from './nav'
-import Footer from '../components/home/footer'
-import Tool from '../components/home/tool'
-import Product from '../components/home/product'
-
+import Nav from '../components/common/Nav';
 class App extends Component {
 
   componentDidMount(){
     const { dispatch } = this.props
     dispatch(homeAPI())
   }
-
+// 
   render() {
     const { dispatch,data,login } = this.props
     return (
-      <div>
+      <div className='root'>
 
-          <Nav/>
+        <div className="header">
+          header
+        </div>
+
+        <div className="container">
 
           <Slider data={data.slider} />
+          123123<br/>123123<br/>123123<br/>123123<br/>123123<br/>123123<br/>123123<br/>123123<br/>123123<br/>123123<br/>
+        </div>
 
-          <div className="hd">
-            <div className="innerbox clearfix">
-              <div className="indexleft">
-                  <Product data={data.products}/>
-              </div>
-
-            </div>
-          </div>
-
-          <Footer/>
-          <Tool/>
+        <Nav/>
 
       </div>
     )

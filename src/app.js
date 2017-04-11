@@ -7,10 +7,10 @@ class App extends Component{
 	render(){
 		const {spin,message} = this.props;
 		return (
-			<div>
+			<div className='root'>
 				<Spin spin={spin}/>
 				<Message data={message}/>
-				<div>{this.props.children}</div>
+				<div className='root'>{this.props.children}</div>
 			</div>
 		)
 	};

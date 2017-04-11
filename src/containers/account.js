@@ -3,30 +3,29 @@ import { connect } from 'react-redux'
 import { homeAPI } from '../actions/home'
 
 import Slider from '../components/home/slider'
-// import Nav from '../components/nav'
-// import Product from '../components/homeProduct'
 
-import HomeTop from '../components/home/homeTop'
-import Footer from '../components/home/footer'
-import Tool from '../components/home/tool'
-
+import Nav from '../components/common/Nav';
 class App extends Component {
 
   componentDidMount(){
     const { dispatch } = this.props
     dispatch(homeAPI())
   }
-
+// <Slider data={data.slider} />
   render() {
-    const { dispatch,data } = this.props
+    const { dispatch,data,login } = this.props
     return (
-      <div>
+      <div className='root'>
 
-          <HomeTop/>
+        <div className="header">
+          帐号
+        </div>
 
-            注册
-          <Footer/>
-          <Tool/>
+        <div className="container">
+          
+        </div>
+
+        <Nav/>
 
       </div>
     )
@@ -35,7 +34,8 @@ class App extends Component {
 
 function map(state) {
   return {
-    data: state.home.home
+    data: state.home.home,
+    login: state.login.login
   }
 }
 

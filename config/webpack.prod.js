@@ -61,7 +61,7 @@ module.exports = {
     plugins: [
         // 根据模版生成html
         new HtmlWebpackPlugin({
-            title: 'demo',
+            title: 'r-music',
             template: './index.temp.html',
             minify:{ 
                 removeComments : true,
