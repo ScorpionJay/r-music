@@ -1,0 +1,80 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "react boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "webpack-dev-server": "webpack-dev-server",
+    "webpack": "webpack",
+    "build:prod":"rimraf dist & webpack --config config/webpack.prod.js",
+    "build:dev":"rimraf dev & webpack --config config/webpack.dev.js",
+    "build:hash":"rimraf dev & webpack --config config/webpack.hash.js",
+    "build": "npm run build:prod",
+    "clean:dist": "rimraf dist",
+    "clean:dev": "rimraf dev",
+    "test": "jest",
+    "start": "webpack-dev-server --config webpack.config.js --hot",
+    "serve:prod": "webpack-dev-server --config config/webpack.prod.js --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ScorpionJay/react-web-demo.git"
+  },
+  "keywords": [
+    "reactjs",
+    "redus",
+    "react-router",
+    "webpack"
+  ],
+  "author": "jay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ScorpionJay/react-web-demo/issues"
+  },
+  "homepage": "https://github.com/ScorpionJay/react-web-demo#readme",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.2.1",
+    "babel-jest": "^17.0.2",
+    "babel-loader": "^6.2.8",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.0",
+    "eslint": "^3.18.0",
+    "eslint-config-standard": "^7.1.0",
+    "eslint-loader": "^1.7.0",
+    "eslint-plugin-flowtype": "^2.30.4",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-standard": "^2.1.1",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
+    "image-webpack-loader": "^3.0.0",
+    "jest": "^17.0.3",
+    "node-sass": "^4.5.2",
+    "open-browser-webpack-plugin": "0.0.3",
+    "optimize-css-assets-webpack-plugin": "^1.3.0",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-paginate": "^4.2.0",
+    "react-redux": "^4.4.6",
+    "react-router": "^3.0.0",
+    "react-slick": "^0.14.5",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0",
+    "slick-carousel": "^1.6.0"
+  }
+}

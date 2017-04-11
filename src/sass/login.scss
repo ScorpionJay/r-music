@@ -1,0 +1,129 @@
+
+.loginC{
+/*登陆*/
+.login { margin:20px 0px; background-color:#ffffff;color:#666666; padding:40px; border:solid 1px #e9e9e9; margin-top:20px;}
+.login h2 { font-weight:normal;}
+.login a:hover { text-decoration:underline;}
+.login .logForm { width:290px; float:left; padding:40px 40px 20px 40px; height:320px; background-color:#fafafa; border: solid 1px #e9e9e9;}
+.login .logForm .input {width:243px; padding-left:40px; line-height:18px; padding-top:11px; padding-bottom:11px;}
+.login .logForm li { margin-bottom:24px; position:relative;}
+.login .logForm .btn .ui-btn {width: 290px;}
+.login .logForm .loginerror { font-size:13px; color:#ff0000; height:25px; display:inline-block;}
+
+.login .logImages { width:500px; float:right; line-height:0px;}
+
+/*注册*/
+.regbox { background-color:#fff7ea; overflow:hidden; padding:40px 40px 40px 70px;; width:700px; margin:0px auto;}
+
+.reg {  margin:20px 0px;background-color:#ffffff; padding:40px;}
+.reg h1 { font-weight:normal; margin-bottom:20px;}
+.reg .regForm {width:295px; float:left;}
+.reg .regForm .input {width:243px; padding-left:40px; line-height:18px; padding-top:10px; padding-bottom:10px; height:18px;}
+.reg .regForm li { margin-bottom:24px; position:relative;}
+.red .regForm .sendphonecode { display:inline-block;}
+.reg .regForm .sendphonecode .input { width:100px; float:left;}
+.reg .regForm .sendphonecode .ui-btn { width:133px; padding:0px; text-align:center; float:right; height:40px; line-height:40px; margin-left:5px;}
+.reg .regForm .btn .ui-btn {width: 296px;}
+.reg .regForm .inviteCode { margin-bottom: 10px;}
+.reg .logImages { width:300px; float:right; line-height:0px;}
+
+
+.reg2 {  margin:20px 0px;background-color:#ffffff; padding:40px; margin-top:20px;}
+.reg2 h1 { font-weight:normal; margin-bottom:20px;}
+.reg2 .regphonetips { text-align:center;}
+.reg2 .regphone { width:500px; margin:0px auto;}
+.reg2 .regForm {width:295px; padding-top:20px; margin:0px auto;}
+.reg2 .regForm .input {width:243px; padding-left:40px; line-height:18px; padding-top:10px; padding-bottom:10px; height:18px;}
+.reg2 .regForm li { margin-bottom:24px; position:relative;}
+.red2 .regForm .sendphonecode { display:inline-block;}
+.reg2 .regForm .sendphonecode .input { width:100px; float:left;}
+.reg2 .regForm .sendphonecode .ui-btn { width:133px; padding:0px; text-align:center; float:right; height:40px; line-height:40px; margin-left:5px;}
+.reg2 .regForm .btn .ui-btn {width: 290px;}
+.reg2 .formtips { width:500px; color:#aaa; line-height:26px;}
+
+
+.reg3 { margin:20px 0px;background-color:#ffffff; padding:40px; margin-top:20px;}
+.reg3 h1 { font-weight:normal; margin-bottom:20px;}
+.reg3 .tipsbox { text-align:center; }
+.reg3 .tips {background-repeat: no-repeat;background-position: left 10px;padding:10px 10px 10px 90px;text-align:left; margin:0px auto;display:inline-block; _zoom:1;*display:inline; min-width: 170px;}
+.reg3 .tips .color { color: #f4a51d;}
+.reg3 .tips.right {background-image: url(../images/common/tips_right.png);}
+.reg3 .tips.right h2 { line-height:50px; margin:0px; color:#82c72e;}
+.reg3 .expertips { font-size:18px; color:#444444; font-weight:bold; border:solid 2px #f4a51d; padding:20px; width:390px; margin:0px auto 20px auto; line-height:30px; height:30px;}
+.reg3 .expertips span {background-image: url(../images/login/expertips_icon.png);background-repeat: no-repeat;background-position: left center;display:inline-block; padding-left:40px;}
+
+.reg3 .goInvestment { text-align: center; padding: 10px 0px;}
+.reg3 .goInvestment .ui-btn { width: 240px; height: 40px; line-height: 40px; font-size: 15px;}
+
+
+.reg3 .safetp { color:#444444; border:solid 2px #f4a51d; padding:15px 20px 15px 20px; width:450px; margin:20px auto 20px auto; line-height:30px; height:30px;}
+.reg3 .safetp span { font-weight:bold;cursor:pointer; color:#82c72e;}
+
+.reg3 .setting {border-top: solid 1px #f6f6f6; width: 700px; margin: 20px auto 0px auto;}
+.reg3 .setting .box { border-bottom: solid 1px #f6f6f6; overflow: hidden;
+    padding: 10px 15px;}
+.reg3 .setting .box .con { float: left;}
+.reg3 .setting .box .con .tit { font-size: 16px; color: #000000;}
+.reg3 .setting .box .con .titp { color: #aaaaaa;}
+.reg3 .setting .box .btn { float: right; margin-top: 7px;}
+.reg3 .setting .box .btn .ui-btn {}
+.reg3 .setting .box .btn .ui-btn { height:32px; line-height:32px; border:solid 1px #f4a51d; background-color:#ffffff; color:#f4a51d; font-size:15px;}
+.reg3 .setting .box .btn .ui-btn:hover { background-color:#f4a51d; color:#ffffff;}
+.reg3 .setting .goGuide { text-align: center;padding: 20px 0px 0px 0px;color: #aaaaaa;}
+
+
+/*忘记密码*/
+.forgetpass { margin:20px auto; background-color:#ffffff;color:#666666; padding:40px;}
+.forgetpass h1 { font-weight:normal; margin-bottom:20px;}
+.forgetpass h2 { font-weight:normal;}
+.forgetpass .passForm { padding:0px; width:295px; margin:0px auto;}
+.forgetpass .passForm .input {width:243px; padding-left:40px; line-height:18px; padding-top:11px; padding-bottom:11px;}
+.forgetpass .passForm li { margin-bottom:24px; position:relative;}
+.forgetpass .passForm .sendphonecode { display:inline-block;}
+.forgetpass .passForm .sendphonecode .input { width:100px; float:left;}
+.forgetpass .passForm .sendphonecode .ui-btn { width:133px; padding:0px; text-align:center; float:right; height:40px; line-height:40px; margin-left:5px;}
+.forgetpass .passForm .btn .ui-btn {width: 290px;}
+
+.forgetpass .tipsbox { text-align:center;}
+.forgetpass .tips {background-repeat: no-repeat;background-position: left 10px;padding:10px 10px 10px 90px;display:inline-block; text-align:left; margin:0px auto;}
+.forgetpass .tips.right {background-image: url(../images/common/tips_right.png);}
+.forgetpass .tips.right h2 { line-height:50px; margin:0px; color:#82c72e;}
+
+
+.captcha { display: inline-block; padding-left:15px; }
+.captcha img { margin-top:7px; float:left; }
+.captcha a.captchabtn { margin-left:10px; display:block; float:left; margin-top:4px; line-height:30px; background-image:url(../images/login/refresh.png); width:25px; height:28px;}
+
+/*表单图标*/
+.login-form-username, .login-form-password,.login-form-phone,.login-form-captcha, .login-form-id, .login-form-idcar, .login-form-yao {display: block;height: 21px;left: 8px;position: absolute;top: 10px;width: 23px;}
+.login-form-username {background-color: rgba(0, 0, 0, 0);background-image: url(../images/login/icon-ren.png);background-repeat: no-repeat;background-position: 3px 0;}
+.login-form-password {background-color: rgba(0, 0, 0, 0);background-image: url(../images/login/icon-suo.png);background-repeat: no-repeat;background-position: 4px 1px;}
+.login-form-phone {background-color: rgba(0, 0, 0, 0);background-image: url(../images/login/icon-phone.png);background-repeat: no-repeat;background-position: 4px 0px;}
+.login-form-captcha {background-color: rgba(0, 0, 0, 0);background-image: url(../images/login/icon-captcha.png);background-repeat: no-repeat;background-position: 2px 1px;}
+
+.login-form-id {background-color: rgba(0, 0, 0, 0);background-image: url(../images/login/icon-id.png);background-repeat: no-repeat;background-position: 1px 1px;}
+.login-form-idcar {background-color: rgba(0, 0, 0, 0);background-image: url(../images/login/icon-idcar.png);background-repeat: no-repeat;background-position: 0px 4px;}
+.login-form-yao {background-color: rgba(0, 0, 0, 0);background-image: url(../images/login/icon-yao.png);background-repeat: no-repeat;background-position: 2px 0px;}
+
+
+/*步奏*/
+.step {width:572px;height:53px; margin:0px auto 40px auto;background-image: url(../images/login/step.jpg);background-repeat: no-repeat;background-position: left top;}
+.step.step1 {background-position: left top;}
+.step.step2 {background-position: left -53px;}
+.step.step3 {background-position: left -106px;}
+
+/*步奏*/
+.step-password {width:678px;height:53px; margin:0px auto 40px auto;background-image: url(../images/login/step-password.jpg);background-repeat: no-repeat;background-position: left top;}
+.step-password.step1 {background-position: left top;}
+.step-password.step2 {background-position: left -53px;}
+.step-password.step3 {background-position: left -106px;}
+.step-password.step4 {background-position: left -159px;}
+
+}
+
+
+
+
+
+
+

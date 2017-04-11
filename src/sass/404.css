@@ -1,0 +1,90 @@
+.notFound {
+	a {
+		color: #ffa100;
+		outline: none
+	}
+
+	.innerbox {
+		width: 980px;
+		margin: 0px auto;
+		padding-left: 10px;
+		padding-right: 10px
+	}
+
+	.fl {
+		float: left
+	}
+
+	.fr {
+		float: right
+	}
+
+	#header {
+		background: #fff;
+		border-bottom: solid 1px #e2e2e2\9;
+		-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+		-webkit-border-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+		box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+		position: relative;
+		z-index: 8;
+
+		.headermain {
+			padding: 14px 0px;
+			height: 46px;
+			background-repeat: no-repeat;
+			background-position: center bottom
+		}
+
+		.logo {
+			float: left
+		}
+
+	}
+
+	.errorpage {
+		width: 600px;
+		margin: 100px auto;
+		overflow: hidden;
+
+		.title {
+			color: #ffa100;
+			font-size: 36px;
+			font-weight: normal;
+			float: left;
+			margin-left: 70px;
+			margin-top: 15px
+		}
+
+		.info {
+			float: left;
+			margin-left: 70px;
+			text-align: left;
+			margin-top: 20px;
+			line-height: 25px
+		}
+
+		.btn {
+			margin-left: 10px
+		}
+
+	}
+
+	.footer {
+		position: absolute;
+		bottom: 0px;
+		background-color: #585858;
+		width: 100%;
+
+		.copyright {
+			padding: 10px 0px;
+			color: #cccccc;
+			text-align: center
+		}
+
+		#sink-footer {
+			height: 40px
+		}
+
+	}
+
+}

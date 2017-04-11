@@ -1,0 +1,55 @@
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:14px/1.5 "微软雅黑",YaHei,tahoma,arial,"Hiragino Sans GB",宋体;color:#444;outline:0;}
+a{color:#f4a51d;outline:none;blr:expression(this.onFocus=this.blur());}
+a:hover {color: #e59b1c;}
+
+
+html {height: 100%;-webkit-font-smoothing: antialiased;-webkit-text-size-adjust: none;}
+html{overflow-y:scroll}
+input,button{*overflow:visible;}
+
+p { line-height:22px; margin-bottom:10px;}
+h1 { font-size:28px; margin-bottom:15px;}
+h2 { font-size:22px; margin-bottom:15px;}
+h3 { font-size:20px;}
+h4 { font-size:16px; margin-bottom:5px; margin-top:5px;}
+
+.arrow-right {
+	border-top:1px solid #D1D1D1;
+    border-left:1px solid #D1D1D1;
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: 5px;
+    transform: rotate(135deg); 
+}
+.arrow-left {
+	border-top:2px solid #fff;
+    border-left:2px solid #fff;
+    width: 15px;
+    height: 15px;
+    display: block;
+    margin: 15px 10px;
+    transform: rotate(-45deg); 
+}
+
+
+
+
