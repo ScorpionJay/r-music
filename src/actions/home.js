@@ -1,4 +1,3 @@
-// import 'whatwg-fetch'
 import Config from '../config'
 import { spin,spinHidden } from './spin'
 import api from '../api'
@@ -14,37 +13,20 @@ export const home = (obj) =>{
 
 export function homeAPI(){
 
-	 // return dispatch => {
-	 // 	( async (url) => {
-	 // 		dispatch(spin())
-	 // 		let data = await api.request(url)
-	 // 		dispatch(home(data))
-	 // 		dispatch(spinHidden())
-	 // 	})(Config.homeAPI)
-	 // }
-	return dispatch => {
+	return async dispatch => {
+	 	dispatch(spin());
+	 	try{
+	 		let data = await api( Config.homeAPI );
+	 		let musicList = await api( Config.musicListAPI,'get',{page:2,json:true} );
+	 		console.log(musicList)
+		 	dispatch(home(data))
+		 	dispatch(spinHidden());
+		 }catch(error){
+			console.log('error',error);
+		}
+	}
 
-		dispatch(spin());
-	 	api( Config.homeAPI )
-	 		.then(data=> {
-	 			dispatch(home(data))
-			 	dispatch(spinHidden())
-	 		})
-
-
-
-	 // 	fetch(Config.homeAPI,{
-		// 	}).then(function(response) {
-		// 		return response.json()
-		// 	}).then(function(json) {
-		// 	 	dispatch(home(json))
-		// 	 	dispatch(spinHidden())
-		// 	}).catch(function(ex) {
-		// 		console.log('parsing failed', ex)
-		// 		dispatch(spinHidden())
-		// 	}
-		// )
-	 }
+	
 
 	
 }

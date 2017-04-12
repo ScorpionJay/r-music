@@ -1,12 +1,22 @@
 .homeTab {
 	background-color: #eee;
-	display:flex;
-	justify-content:space-around;
-	align-items:center;
-	height: 3rem;
-	border-bottom: .1rem solid #aaa;
 
-	div {
+	.homeTab1 {
 		display:flex;
+		justify-content:space-around;
+		align-items:center;
+		height: 3rem;
+
+		div {
+			display:flex;
+		}
+	}
+
+	.highlight {
+		width: 25%;
+		height: .15rem;
+		background-color: #ce3d3e;
+		transition: transform .3s,-webkit-transform .3s;
 	}
 }
+

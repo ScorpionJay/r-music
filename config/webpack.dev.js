@@ -94,9 +94,10 @@ module.exports = function (options){
                     target: "http://localhost:8001",
                     pathRewrite: {"^/api" : ""}
                 },
-                "/shanlinbao": {
-                    target: "http://www.shanlinbao.com",
-                    pathRewrite: {"^/shanlinbao" : ""}
+                "/kugou": {
+                    target: "http://m.kugou.com",
+                    changeOrigin: true,
+                    pathRewrite: {"^/kugou" : ""}
                 }
             }
         }

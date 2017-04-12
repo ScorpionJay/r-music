@@ -18,6 +18,7 @@ if (process.env.NODE_ENV === 'production') {
     loginUrl:'/api/uaa/oauth/token',
     test:'/api/resource/test',
   	homeAPI:'./json/home.json',
+    musicListAPI:'/kugou/plist/index',
     calculator:'/shanlinbao/calculator/rzb',
     //inverstApi:'./json/inverst.json',
     inverstApi:serviceUrl+'/inverst',

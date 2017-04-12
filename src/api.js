@@ -19,8 +19,7 @@ export default async ( url, method = 'get', data = {} ,headers = {'Content-Type'
 			}
 
 			if( dataStr !== '' ){
-				dataStr.substr(0,dataStr.lastIndexOf('&'));
-				url = url + '?' +dataStr;
+ 				url = url + '?' +dataStr.substr(0,dataStr.lastIndexOf('&'));
 			}
 		}
 
