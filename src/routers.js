@@ -45,6 +45,13 @@ const Routes = {
 			})
 		   }
 		},
+		{ path: 'play/:hash', 
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/play').default)
+			})
+		   }
+		},
 		{ path: 'login/:page', 
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{

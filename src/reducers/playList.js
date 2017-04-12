@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
-import { PLAYLIST } from '../actions/playList'
-
+import { PLAYLIST,MUSIC } from '../actions/playList'
 let vo = {
   list:[
     {
@@ -17,7 +16,7 @@ let vo = {
       rp_type: "audio",
       pkg_price: 0,
       feetype: 0,
-      filename: "习眀谣 - 四月",
+      filename: "",
       price_320: 0,
       extname: "mp3",
       hash: "99A71D3815032CC4105CA0C7D7F0698A",
@@ -45,13 +44,13 @@ let vo = {
       }
   ],
   info:{
-            specialname: "人间四月天，花开正好时",
-            nickname: "永不放弃",
-            publishtime: "2017-04-01 00:00:00",
+            specialname: "",
+            nickname: "",
+            publishtime: "",
             singername: "",
-            intro: "春天暖风吹，赶在夏天到来之前，带上满满的好心情，青涩的小心思，手牵手去赏花！",
+            intro: "",
             songcount: 21,
-            imgurl: "http://imge.kugou.com/soft/collection/{size}/20170401/20170401174208269892.jpg",
+            imgurl: "",
             specialid: 123183,
             suid: 509004855,
             tags: [
@@ -80,8 +79,40 @@ function playList(state = vo, action) {
   }
 }
 
+
+let musicVo = {
+  url: "http://fs.open.kugou.com/a0a6a6e1427e3f53764c554e71845d17/58ee374e/G009/M00/09/07/SQ0DAFUOHNOIV3OlAA9DWzOmPlgAABBmwPF_pwAD0Nz944.m4a",
+  bitRate: 32,
+  choricSinger: "",
+  songName: "",
+  req_hash: "9283C8FEA2871E449328BCD49D283471",
+  singerHead: "",
+  privilege: 0,
+  status: 1,
+  stype: 11323,
+  ctype: 1009,
+  singerName: "",
+  fileName: "",
+  singerId: 6076,
+  topic_url: "",
+  intro: "",
+  errcode: 0,
+  extName: "m4a",
+  imgUrl: "",
+  timeLength: 243
+}
+
+function music(state = musicVo, action) {
+  switch (action.type) {
+    case MUSIC:
+      return action.obj
+    default:
+      return state
+  }
+}
+
 const Reducers = combineReducers({
-  playList
+  playList,music
 })
 
 export default Reducers

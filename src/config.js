@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === 'production') {
   	homeAPI:'./json/home.json',
     musicListAPI:'/kugou/plist/index',
     playListAPI:'/kugou/plist/list/id/?json=ture',
+    musicAPI:'/kugou/app/i/getSongInfo.php?cmd=playInfo&hash=HASH&from=mkugou',
     calculator:'/shanlinbao/calculator/rzb',
     //inverstApi:'./json/inverst.json',
     inverstApi:serviceUrl+'/inverst',

@@ -1,8 +1,9 @@
 import Config from '../config'
 import { spin,spinHidden } from './spin'
 import api from '../api'
-
 export const PLAYLIST = 'PLAYLIST'
+export const MUSIC = 'MUSIC'
+
 export const playList = (obj) =>{
 	return {
 		type: PLAYLIST,
@@ -10,8 +11,14 @@ export const playList = (obj) =>{
 	}
 }
 
-export function playListAPI(id){
+export const music = (obj) =>{
+	return {
+		type: MUSIC,
+		obj
+	}
+}
 
+export function playListAPI(id){
 	return async dispatch => {
 	 	dispatch(spin());
 	 	try{
@@ -26,10 +33,20 @@ export function playListAPI(id){
 			console.log('error',error);
 		}
 	}
+}
 
-	
-
-	
+export function musicAPI(id){
+	return async dispatch => {
+	 	dispatch(spin());
+	 	try{
+	 		let data = await api( Config.musicAPI.replace('HASH',id) );
+	 		console.log(data)
+		 	dispatch(music(data))
+		 	dispatch(spinHidden());
+		 }catch(error){
+			console.log('error',error);
+		}
+	}
 }
 
 

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 export default class partners extends Component { 
   render() {
@@ -6,17 +7,13 @@ export default class partners extends Component {
       let imgU = imgurl.replace('{size}',400)
       return (
         <div style={Styles.container}>
-            <div>
+              <div style={Object.assign(Styles.mask,{backgroundImage:`url(${imgU})`} ) }></div>
               <div style={Styles.intro}>
                   <div>
                     <img src={imgU} style={Styles.introImg} />
                   </div>
                   <div style={Styles.introName}>{specialname}</div>
               </div>
-              <div style={Object.assign(Styles.mask,{backgroundImage:`url(${imgU})`} ) }>
-            </div>
-
-            </div>
 
             {
               this.props.data.list.map((obj,index)=>
@@ -30,12 +27,12 @@ export default class partners extends Component {
 
 class Item extends Component { 
   render() {
-      const {filename,imgurl,intro,playcount,specialid,index} = this.props;
+      const {filename,imgurl,intro,playcount,hash,index} = this.props;
       return (
-        <div style={Styles.ItemContainer}>
+        <Link style={Styles.ItemContainer} to={`play/${hash}`}>
           <div style={Styles.index}>{index}</div>
           <div style={Styles.name}>{filename}</div>
-        </div>
+        </Link>
       )
   }
 }
@@ -49,8 +46,8 @@ const Styles = {
   intro:{
     display:'flex',
     padding:'1rem',
-    // filter: 'blur(.1rem)'
-    zIndex:'2',
+    marginTop:'-13rem',
+    zIndex: 2
   },
   introImg:{
     width:'12rem',
@@ -67,16 +64,15 @@ const Styles = {
     padding:'1rem'
   },
   mask:{
-    height:'13rem',
+    height:'13.5rem',
     width:'100%',
-    filter: 'blur(80px)',
-    zIndex:'1',
-    marginTop:'-15rem'
+    filter: 'blur(60px)',
   },
   ItemContainer:{
     display: 'flex',
     flex:1,
     padding:'1rem',
+    color:'#333'
   },
   index:{
     padding:'0 .6rem'
