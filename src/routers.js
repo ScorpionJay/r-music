@@ -38,7 +38,13 @@ const Routes = {
 			})
 		   }
 		},
-
+		{ path: 'playList/:id', 
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/playList').default)
+			})
+		   }
+		},
 		{ path: 'login/:page', 
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{

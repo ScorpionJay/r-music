@@ -19,6 +19,7 @@ if (process.env.NODE_ENV === 'production') {
     test:'/api/resource/test',
   	homeAPI:'./json/home.json',
     musicListAPI:'/kugou/plist/index',
+    playListAPI:'/kugou/plist/list/id/?json=ture',
     calculator:'/shanlinbao/calculator/rzb',
     //inverstApi:'./json/inverst.json',
     inverstApi:serviceUrl+'/inverst',

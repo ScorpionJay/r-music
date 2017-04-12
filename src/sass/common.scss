@@ -1,55 +1,53 @@
 /* reset */
-html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
-
-
-
-
-
+html,body{margin:0;padding:0;}
+a{
+    text-decoration: none;
+}
 
 html{
-            height:100%;
-            background-color: #515363;
-         }
-         body {
-            height:100%;
-            width: 100%;
-            max-width: 640px;/* 对于pc最大宽度*/
-            margin: 0 auto;
-            box-shadow: 0 0 160px 0 #5c99e7;
-         }
-        .root {
-            display: flex;
-            flex-direction: column;
-            background-color:#fff;
-            height: 100%;
-            width:100%;
-        }
-        .header {
-            background-color:#fff;
-            height: 3rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            background-color:#eee;
-            flex:1;
-            overflow-y: auto;
-            overflow-x: hidden;
-            width:100%;
-            -webkit-overflow-scrolling:touch;
-        }
-        .footer {
-            display: flex;
-            background-color:#fff;
-            height: 3.5rem;
-        }
-        .footerItem {
-            flex:1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    height:100%;
+    background-color: #515363;
+}
+body {
+    height:100%;
+    width: 100%;
+    max-width: 640px;/* 对于pc最大宽度*/
+    margin: 0 auto;
+    box-shadow: 0 0 160px 0 #5c99e7;
+ }
+.root {
+    display: flex;
+    flex-direction: column;
+    background-color:#fff;
+    height: 100%;
+    width:100%;
+}
+.header {
+    background-color:#fff;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background-color:#eee;
+    flex:1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width:100%;
+    -webkit-overflow-scrolling:touch;
+}
+.footer {
+    display: flex;
+    background-color:#fff;
+    height: 3.5rem;
+}
+.footerItem {
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .footer a {
     color:#666

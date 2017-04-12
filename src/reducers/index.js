@@ -7,6 +7,7 @@ import  message from './message'
 import  dialog from './dialog'
 import  user from './user'
 import  calculator from './calculator'
+import  playList from './playList';
 
 const reducers = combineReducers({
   home,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
   message,
   dialog,
   user,
-  calculator
+  calculator,
+  playList
 })
 
 export default reducers

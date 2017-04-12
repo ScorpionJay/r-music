@@ -1,19 +1,19 @@
-
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 export default class ProductItem extends Component { 
   render() {
-      const {specialname,imgurl,intro,playcount} = this.props.data
-      const imgurl2 = imgurl.replace('{size}',400)
+      const {specialname,imgurl,intro,playcount,specialid} = this.props.data;
+      const imgurl2 = imgurl.replace('{size}',400);
       return (
-        <div style={Styles.container}>
+        <Link style={Styles.container} to={`/playList/${specialid}`}>
           <div style={Styles.img}>
             <div style={Styles.count}>{ parseInt(playcount/10000) + '万'}</div>
             <img src={imgurl2} style={Styles.img} />
           </div>
           <div style={Styles.name}>{specialname}</div>
           
-        </div>
+        </Link>
       )
   }
 }
