@@ -24,10 +24,6 @@ const Styles = {
   container:{
     display: 'flex',
     flexWrap:'wrap',
-    alignItems:'flex-start',
     justifyContent: 'space-around',
-    color:'#333',
-    backgroungColor: '#f0f0f0',
-  },
-
+  }
 }

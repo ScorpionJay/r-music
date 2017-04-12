@@ -21,7 +21,6 @@ export default class ProductItem extends Component {
 const Styles = {
   container:{
     display: 'flex',
-    flex:1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems:'center',
@@ -32,7 +31,7 @@ const Styles = {
   name:{
     display: 'flex',
     justifyContent: 'flex-start',
-    fontSize:'.2rem',
+    fontSize:'1rem',
     width:'9rem'
   },
   img:{
