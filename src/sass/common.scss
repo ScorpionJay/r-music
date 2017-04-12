@@ -91,12 +91,12 @@ html,body {
 
 
 .arrow-right {
-	border-top:1px solid #D1D1D1;
-    border-left:1px solid #D1D1D1;
-    width: 10px;
-    height: 10px;
+	border-top:1px solid #333;
+    border-left:1px solid #333;
+    width: .6rem;
+    height: .6rem;
     display: block;
-    margin: 5px;
+    margin: 6px;
     transform: rotate(135deg); 
 }
 .arrow-left {

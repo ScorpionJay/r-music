@@ -4,9 +4,11 @@ import MusicItem from './musicItem'
 
 export default class partners extends Component { 
 
+
+
   render() {
       return (
-        <div>
+        <div style={Styles.container}>
             {
               this.props.data.map((obj)=>
                   <MusicItem data={obj}/>
@@ -18,4 +20,14 @@ export default class partners extends Component {
 }
 
 
+const Styles = {
+  container:{
+    display: 'flex',
+    flexWrap:'wrap',
+    alignItems:'flex-start',
+    justifyContent: 'space-around',
+    color:'#333',
+    backgroungColor: '#f0f0f0',
+  },
 
+}

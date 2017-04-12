@@ -64,8 +64,11 @@ class App extends Component {
           <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
             <div>
                 <Slider data={data.slider} />
-                <div>推荐歌单</div>
-                <MusicList data={data.products}/>
+                <div className='recommod'>
+                  <span>推荐歌单</span>
+                  <span className='arrow-right'></span>
+                </div>
+                <MusicList data={data.recommendMusics}/>
             </div>
             <div>
               todo
