@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch,data,login } = this.props
+    const { dispatch,data,login,krc } = this.props
     const {singerName,url} = data
     return (
       <div className='root'>
@@ -32,10 +32,9 @@ class App extends Component {
           <div style={{display:'flex',flex:1,justifyContent: 'center'}}>{singerName}</div>
           <div style={{display:'flex',flex:1}}></div>
         </div>
-        
 
-        <div className="container">
-          <audio src={url} controls='controls'></audio>
+        <div className="container" >
+        {krc}
         </div>
 
         <Nav/>
@@ -48,6 +47,7 @@ class App extends Component {
 function map(state) {
   return {
     data: state.playList.music,
+    krc: state.playList.krc,
     login: state.login.login
   }
 }

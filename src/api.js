@@ -26,7 +26,6 @@ export default async ( url, method = 'get', data = {} ,headers = {'Content-Type'
 		// header
 		if( Object.keys(headers).length !== 0  ){
 			Object.assign( requestConfig.headers, headers );
-			console.log(requestConfig.headers)
 		}
 
 		try{
