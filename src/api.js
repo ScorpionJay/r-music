@@ -26,6 +26,7 @@ export default async ( url, method = 'get', data = {} ,headers = {'Content-Type'
 		// header
 		if( Object.keys(headers).length !== 0  ){
 			Object.assign( requestConfig.headers, headers );
+			console.log(requestConfig.headers)
 		}
 
 		try{
@@ -37,7 +38,15 @@ export default async ( url, method = 'get', data = {} ,headers = {'Content-Type'
 				Storage.clear();
 				location.href = '/';
 			}else{
-				let data = await response.json();
+				let data;
+				switch(requestConfig.headers.Accept) {
+					case 'application/json':
+						data = response.json()
+						break;
+					case 'text/html':
+						data = response.text()
+						break;
+				}
 				return data
 			}
 		}catch(error){

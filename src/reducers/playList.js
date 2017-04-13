@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { PLAYLIST,MUSIC } from '../actions/playList'
+import { PLAYLIST,MUSIC,KRC } from '../actions/playList'
 let vo = {
   list:[
     {
@@ -111,8 +111,19 @@ function music(state = musicVo, action) {
   }
 }
 
+let krcVo = '';
+
+function krc(state = musicVo, action){
+  switch (action.type) {
+    case KRC:
+      return action.obj
+    default:
+      return state
+  }
+}
+
 const Reducers = combineReducers({
-  playList,music
+  playList,music,krc
 })
 
 export default Reducers
