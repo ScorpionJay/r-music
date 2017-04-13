@@ -4,6 +4,12 @@ import Spin from './components/common/Spin';
 import Message from './components/common/Message';
 import Audio from './components/music/audio';
 class App extends Component{
+
+  getCur(t){
+  	// todo console.log(t)
+  }
+
+
 	render(){
 		const {music,play,spin,message} = this.props;
 		return (
@@ -12,7 +18,7 @@ class App extends Component{
 				<Message data={message}/>
 				<div className='root'>{this.props.children}</div>
 
-				<Audio src={music.url} play={play}/>
+				<Audio src={music.url} play={play} getCur={(e)=>this.getCur(e)} />
 			
 			</div>
 		)

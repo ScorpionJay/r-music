@@ -45,7 +45,7 @@ export function playListAPI(id){
 	 		}
 		 	dispatch(playList(d))
 		 	dispatch(spinHidden());
-		 }catch(error){
+		}catch(error){
 			console.log('error',error);
 		}
 	}

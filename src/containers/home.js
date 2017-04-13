@@ -6,6 +6,7 @@ import Slider from '../components/home/slider'
 import Nav from '../components/common/Nav';
 import MusicList from '../components/music/musicList';
 import SwipeableViews from 'react-swipeable-views';
+import { Link } from 'react-router';
 
 class App extends Component {
 
@@ -35,7 +36,6 @@ class App extends Component {
     dispatch(homeAPI())
   }
 
-//
   render() {
     const { dispatch,data,login } = this.props
     const {
@@ -44,8 +44,11 @@ class App extends Component {
     return (
       <div className='root'>
 
-        <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff'}}>
-          首页
+        <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
+          
+          <div onClick={()=>this.back()} style={{display:'flex',flex:1}}></div>
+          <div style={{display:'flex',flex:2,justifyContent: 'center'}}>首页</div>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/playInfo'>...</Link>
         </div>
 
         <div className='homeTab'>

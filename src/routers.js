@@ -52,6 +52,13 @@ const Routes = {
 			})
 		   }
 		},
+		{ path: 'playInfo', 
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/playInfo').default)
+			})
+		   }
+		},
 		{ path: 'login/:page', 
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{
