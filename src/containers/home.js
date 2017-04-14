@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { homeAPI } from '../actions/home'
-
 import Slider from '../components/home/slider'
 import Nav from '../components/common/Nav';
 import MusicList from '../components/music/musicList';

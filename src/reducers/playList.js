@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { PLAYLIST,MUSIC,KRC,PLAY } from '../actions/playList'
+import { PLAYLIST,MUSIC,KRC,PLAY,TIME } from '../actions/playList'
 let vo = {
   list:[
     {
@@ -81,7 +81,7 @@ function playList(state = vo, action) {
 
 
 let musicVo = {
-  url: "http://fs.open.kugou.com/a0a6a6e1427e3f53764c554e71845d17/58ee374e/G009/M00/09/07/SQ0DAFUOHNOIV3OlAA9DWzOmPlgAABBmwPF_pwAD0Nz944.m4a",
+  url: "",
   bitRate: 32,
   choricSinger: "",
   songName: "",
@@ -122,7 +122,7 @@ function krc(state = '', action){
   }
 }
 
-function play(state = 0, action){
+function play(state = 'pause', action){
   switch (action.type) {
     case PLAY:
       return action.obj
@@ -131,8 +131,19 @@ function play(state = 0, action){
   }
 }
 
+
+
+function time(state = {cur:0,total:0}, action){
+  switch (action.type) {
+    case TIME:
+      return action.obj
+    default:
+      return state
+  }
+}
+
 const Reducers = combineReducers({
-  playList,music,krc,play
+  playList,music,krc,play,time
 })
 
 export default Reducers

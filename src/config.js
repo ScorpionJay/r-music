@@ -6,12 +6,11 @@ if (process.env.NODE_ENV === 'production') {
   Config = {
     loginUrl:'/api/uaa/oauth/token',
     test:'/api/resource/test',
-  	homeAPI:'./json/home.json',
-    // inverstApi:'./json/inverst.json',
-    inverstApi:serviceUrl+'/inverst',
-    // inverstApi:'/api/inverst',
-    inverstsAPI: 'http://onejay.top/json/inversts.json',
-    inverstAPI: 'http://onejay.top/json/inversts.json'
+    homeAPI:'./json/home.json',
+    musicListAPI:'/kugou/plist/index',
+    playListAPI:'/kugou/plist/list/id/?json=ture',
+    musicAPI:'/kugou/app/i/getSongInfo.php?cmd=playInfo&hash=HASH&from=mkugou',
+    krcAPI: '/kugou/app/i/krc.php?cmd=100&hash=HASH&timelength=TIMELENGTH',
   }
 }else{
   Config = {
@@ -22,12 +21,6 @@ if (process.env.NODE_ENV === 'production') {
     playListAPI:'/kugou/plist/list/id/?json=ture',
     musicAPI:'/kugou/app/i/getSongInfo.php?cmd=playInfo&hash=HASH&from=mkugou',
     krcAPI: '/kugou/app/i/krc.php?cmd=100&hash=HASH&timelength=TIMELENGTH',
-    calculator:'/shanlinbao/calculator/rzb',
-    //inverstApi:'./json/inverst.json',
-    inverstApi:serviceUrl+'/inverst',
-    inverstsAPI: 'http://onejay.top/json/inversts.json',
-    inverstAPI: 'http://onejay.top/json/inversts.json',
-    tybApi: './json/tyb.json'
   }
 }
 

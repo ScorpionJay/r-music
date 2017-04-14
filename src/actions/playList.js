@@ -5,6 +5,7 @@ export const PLAYLIST = 'PLAYLIST'
 export const MUSIC = 'MUSIC'
 export const KRC = 'KRC'
 export const PLAY = 'PLAY'
+export const TIME = 'TIME'
 
 export const playList = (obj) =>{
 	return {
@@ -30,6 +31,13 @@ export const krc = (obj) => {
 export const play = (obj) => {
 	return {
 		type : PLAY,
+		obj
+	}
+}
+
+export const time = (obj) => {
+	return {
+		type : TIME,
 		obj
 	}
 }
@@ -61,7 +69,7 @@ export function musicAPI(id){
 	 		let krcData = await api( Config.krcAPI.replace('HASH',id).replace('TIMELENGTH',data.timeLength+'000'), 'get', {}, {'Accept':'text/html'});
 		 	dispatch(music(data))
 		 	dispatch(krc(krcData))
-		 	dispatch(play(1))
+		 	dispatch(play('play'))
 		 	dispatch(spinHidden());
 		 }catch(error){
 			console.log('error',error);
@@ -69,5 +77,14 @@ export function musicAPI(id){
 	}
 }
 
+export function musicControll(status){
+	return  dispatch => {
+		dispatch(play(status))	
+	}
+}
 
-
+export function timeAPI(obj){
+	return  dispatch => {
+		dispatch(time(obj))	
+	}
+}
