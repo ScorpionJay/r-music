@@ -12,7 +12,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-     const { dispatch,time } = this.props
+    const { dispatch,time } = this.props
     this.state = {
       slider: time.total === 0 ? 0 : time.cur / time.total *100
     };
@@ -107,7 +107,11 @@ class App extends Component {
           </div>
 
 
-          KRC{krc}
+          <div>
+          {
+            krc.split('\n').map((item)=><div>{item}</div>)
+          }
+          </div>
         </div>
 
 

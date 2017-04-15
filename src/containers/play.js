@@ -34,7 +34,9 @@ class App extends Component {
         </div>
 
         <div className="container" >
-        {krc}
+          {
+            krc.split('\n').map((item)=><div>{item}</div>)
+          }
         </div>
 
         <Nav/>
