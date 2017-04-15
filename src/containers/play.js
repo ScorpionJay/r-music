@@ -86,6 +86,19 @@ class App extends Component {
     const { dispatch,data,login,krc,time,music } = this.props
     const {currentTime ,duration} = this.props.time
 
+
+    // 获取当前歌词
+    //  music.currentMusic.krc.map((item)=> 
+    //           currentTime > item.time ? <div>{item.time}  {item.str}</div> :''
+    // )
+    let krc2 =  music.currentMusic.krc.filter((item)=>
+      currentTime > item.time
+    )
+    let s = krc2.pop()
+    s = s? s.str : ''
+    
+    
+
     return (
       <div className='root'>
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
@@ -106,10 +119,7 @@ class App extends Component {
             <div style={{padding:'0 .5rem'}}> {this.formatSeconds(duration)} </div> 
           </div>
 
-
-          {
-            music.currentMusic.krc.map((item)=><div>{item.time}  {item.str}</div>)
-          }
+          <div style={{textAlign:'center',color:'rgb(206, 61, 62)'}}>{s}</div>
         </div>
 
 
