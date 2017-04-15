@@ -47,7 +47,7 @@ class App extends Component {
           
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}></div>
           <div style={{display:'flex',flex:2,justifyContent: 'center'}}>首页</div>
-          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/playInfo'>...</Link>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>...</Link>
         </div>
 
         <div className='homeTab'>
@@ -66,10 +66,6 @@ class App extends Component {
           <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
             <div>
                 <Slider data={data.slider} />
-                <div className='recommod'>
-                  <span>推荐歌单</span>
-                  <span className='arrow-right'></span>
-                </div>
                 <MusicList data={data.recommendMusics}/>
             </div>
             <div>

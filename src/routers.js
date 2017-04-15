@@ -38,24 +38,17 @@ const Routes = {
 			})
 		   }
 		},
-		{ path: 'playList/:id', 
+		{ path: 'album/:id', 
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{
-				 cb(null, require('./containers/playList').default)
+				 cb(null, require('./containers/album').default)
 			})
 		   }
 		},
-		{ path: 'play/:hash', 
+		{ path: 'play', 
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{
 				 cb(null, require('./containers/play').default)
-			})
-		   }
-		},
-		{ path: 'playInfo', 
-		  getComponent (nextState, cb) {
-			require.ensure([], (require)=>{
-				 cb(null, require('./containers/playInfo').default)
 			})
 		   }
 		},

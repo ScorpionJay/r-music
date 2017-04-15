@@ -1,10 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { playListAPI } from '../actions/playList';
 
 import { browserHistory } from 'react-router';
 import Nav from '../components/common/Nav';
-import PlayList from '../components/music/musicPlayList';
+import Album from '../components/music/album';
+
+import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music';
 
 class App extends Component {
 
@@ -22,6 +25,19 @@ class App extends Component {
     dispatch(playListAPI(this.props.params.id))
   }
 
+
+  async musicBoxAdd(music){
+    const { dispatch } = this.props
+    await dispatch(musicBoxAddAPI(music))
+    await dispatch(currentMusicAPI(music.hash))
+    await dispatch(changetimeAPI({
+      currentTime: 0,
+      duration: 0
+    }))
+    await dispatch(controllAPI('play'))
+    browserHistory.push('play')
+  }
+
   render() {
     const { dispatch,data,login } = this.props
     console.log(data)
@@ -31,12 +47,12 @@ class App extends Component {
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}>返回</div>
           <div style={{display:'flex',flex:1,justifyContent: 'center'}}>歌单</div>
-          <div style={{display:'flex',flex:1}}></div>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>...</Link>
         </div>
         
 
         <div className="container">
-          <PlayList data={data} />
+          <Album data={data} addMusic={(music) => this.musicBoxAdd(music)}/>
         </div>
 
         <Nav/>

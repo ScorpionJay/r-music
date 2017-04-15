@@ -26,7 +26,7 @@ const Styles = {
 		alignItems:'center',
 	    color: 'rgb(51, 51, 51)',
 	    backgroundColor: '#b1abab',
-	    zIndex: 2,
+	    zIndex: 9999,
 	    opacity:'0.8'
 	}
 }

@@ -57,7 +57,7 @@ module.exports = function (options){
         plugins: [
         	// 根据模版生成html
             new HtmlWebpackPlugin({
-                title: 'r-music',
+                title: 'Music',
                 template: './index.temp.html',
             }),
             new ExtractTextPlugin({
