@@ -46,12 +46,13 @@ export function currentMusicAPI(id){
 		 	// dispatch(krc(krcData))
 		 	// 歌词这里可以处理掉
 		 	let krcArray = []
-		 	krc.split('\n').map((item)=>{
+		 	krc.split('\n').map((item,index)=>{
 		 		let t = item.substring(1,item.indexOf(']'))
 		 		let tt = parseInt(t.substring(0,t.indexOf(':'))) * 60 + parseFloat(t.substring(t.indexOf(':')+1))
 		 		krcArray.push({
 		 			time: tt ,
-		 			str: item.substring(item.indexOf(']')+1)
+		 			str: item.substring(item.indexOf(']')+1),
+		 			index:index
 		 		})
 		 	})
 		 	krcArray.pop()

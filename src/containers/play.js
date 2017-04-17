@@ -88,14 +88,21 @@ class App extends Component {
 
 
     // 获取当前歌词
-    //  music.currentMusic.krc.map((item)=> 
-    //           currentTime > item.time ? <div>{item.time}  {item.str}</div> :''
-    // )
+    //<div style={{textAlign:'center',color:'rgb(206, 61, 62)'}}>{s ? s.str : ''}</div>
+          // <div>
+          //   {
+          //     music.currentMusic.krc.map((item)=> 
+          //      currentTime > item.time ? <div>{item.time}  {item.str}</div> :''
+          //     )
+          //   }
+          // </div>
     let krc2 =  music.currentMusic.krc.filter((item)=>
       currentTime > item.time
     )
     let s = krc2.pop()
-    s = s? s.str : ''
+    s = s? s : {time: 0 ,
+          str: '',
+          index:0}
     
     
 
@@ -119,7 +126,16 @@ class App extends Component {
             <div style={{padding:'0 .5rem'}}> {this.formatSeconds(duration)} </div> 
           </div>
 
-          <div style={{textAlign:'center',color:'rgb(206, 61, 62)'}}>{s}</div>
+          
+
+          <div style={{height:'400px',overflowY: 'auto',textAlign:'center'}}>
+            {
+              music.currentMusic.krc.map((item,index)=> 
+                s && s.time === item.time ? <div style={{color:'rgb(206, 61, 62)',transform: 'translateY(-'+  (s.index> 8?(s.index-8)*18 :0 )+'px)'}} >{item.str}</div> : <div style={{transform: 'translateY(-'+ (s.index>8? (s.index-8)*18 :0 )+'px)'}}>{item.str}</div>
+              )
+            }
+          </div>
+
         </div>
 
 
