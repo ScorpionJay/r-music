@@ -30,7 +30,7 @@ body {
     align-items: center;
 }
 .container {
-    background-color:#eee;
+    // background-color:#eee;
     flex:1;
     overflow-y: auto;
     overflow-x: hidden;
@@ -109,4 +109,10 @@ html,body {
 
 
 
-
+.rc-slider-track {
+  background-color: rgb(206, 61, 62) !important;
+}
+.rc-slider-handle{
+  border: solid 3px #d2a5a5  !important;
+  background-color: rgb(206, 61, 62) !important;
+}

@@ -14,7 +14,8 @@ let vo = {
     krc:[{time:0,str:''}],
     singerName:'',
     songName:'',
-    url:''
+    url:'',
+    imgUrl:''
   },
   model:'',
   currentTime:0,

@@ -22,7 +22,7 @@ export default class Audio extends Component {
                   this.props.getCur( this.refs.music  )
                 }
               },
-              1000
+              100
             )
         break;
       case 'pause':

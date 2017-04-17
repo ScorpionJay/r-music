@@ -85,7 +85,7 @@ class App extends Component {
   render() {
     const { dispatch,data,login,krc,time,music } = this.props
     const {currentTime ,duration} = this.props.time
-
+    let imgU = music.currentMusic.imgUrl.replace('{size}',400)
 
     // 获取当前歌词
     //<div style={{textAlign:'center',color:'rgb(206, 61, 62)'}}>{s ? s.str : ''}</div>
@@ -96,6 +96,9 @@ class App extends Component {
           //     )
           //   }
           // </div>
+
+ // <div className="container" style={{backgroundImage:`url(${imgU})`,backgroundSize: 'cover',zIndex:1,position:'absolute',height:'100%', filter: 'blur(6rem)',backgroundPosition: '50%'}}></div>
+
     let krc2 =  music.currentMusic.krc.filter((item)=>
       currentTime > item.time
     )
@@ -107,36 +110,38 @@ class App extends Component {
     
 
     return (
-      <div className='root'>
-        <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
-          <div onClick={()=>browserHistory.goBack()} style={{display:'flex',flex:1}}>返回</div>
-          <div style={{display:'flex',flex:1,justifyContent: 'center'}}>{ music.currentMusic.songName }</div>
-          <div style={{display:'flex',flex:1}}></div>
-        </div>
+      <div className='root' >
+        
+          <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
+            <div onClick={()=>browserHistory.goBack()} style={{display:'flex',flex:1}}>返回</div>
+            <div style={{display:'flex',flex:1,justifyContent: 'center'}}>{ music.currentMusic.songName }</div>
+            <div style={{display:'flex',flex:1}}></div>
+          </div>
 
-        <div className="container" >
-          <div onClick={()=>this.musicControll('play')}>播放</div>  
-          <div onClick={()=>this.musicControll('pause')}>暂停</div>  
-          
-          <div style={{display:'flex'}}>
-            <div style={{padding:'0 1rem'}}> {this.formatSeconds(currentTime)} </div>
-            <div style={{display:'flex',flex:1}}>
-              <Slider onChange={(value)=>this.changeSlider(value)}  step={0.1} value={ this.state.slider}/>
+          <div className="container" >
+            <div className="container" style={{overflowY: 'auto',textAlign:'center',color:'#999',padding:'2rem 0'}}>
+              {
+                music.currentMusic.krc.map((item)=> 
+                  <div style={ Object.assign( {transform: 'translateY('+  (15-s.index*3.3)  +'rem)',transition: 'transform .5s ease',padding:'1rem 0'}, s.time === item.time ? {color:'rgb(206, 61, 62)'} : {} )} >
+                    {item.str}
+                  </div>
+                )
+              }
             </div>
-            <div style={{padding:'0 .5rem'}}> {this.formatSeconds(duration)} </div> 
           </div>
 
-          
+          <div>
+            <div style={{display:'flex'}}>
+              <div style={{padding:'0 1rem',color:'#999'}}> {this.formatSeconds(currentTime)} </div>
+              <div style={{display:'flex',flex:1}}>
+                <Slider onChange={(value)=>this.changeSlider(value)}  step={0.1} value={ this.state.slider}/>
+              </div>
+              <div style={{padding:'0 .5rem',color:'#999'}}> {this.formatSeconds(duration)} </div> 
+            </div>
 
-          <div style={{height:'400px',overflowY: 'auto',textAlign:'center'}}>
-            {
-              music.currentMusic.krc.map((item,index)=> 
-                s && s.time === item.time ? <div style={{color:'rgb(206, 61, 62)',transform: 'translateY(-'+  (s.index> 8?(s.index-8)*18 :0 )+'px)'}} >{item.str}</div> : <div style={{transform: 'translateY(-'+ (s.index>8? (s.index-8)*18 :0 )+'px)'}}>{item.str}</div>
-              )
-            }
+            <div onClick={()=>this.musicControll('play')}>播放</div>  
+            <div onClick={()=>this.musicControll('pause')}>暂停</div>  
           </div>
-
-        </div>
 
 
       </div>

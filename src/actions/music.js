@@ -63,7 +63,8 @@ export function currentMusicAPI(id){
 		 		status:'play',
 		 		url:data.url,
 		 		singerName:data.singerName,
-		 		songName:data.songName
+		 		songName:data.songName,
+		 		imgUrl:data.imgUrl
 		 	}
 
 		 	dispatch(currentMusic(music));
