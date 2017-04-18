@@ -5,25 +5,17 @@ import api from '../api'
 export const MUSICBOX = 'MUSICBOX'
 export const MUSICBOXADD = 'MUSICBOXADD'
 export const CURRENTMUSIC = 'CURRENTMUSIC'
-
-export const KRC = 'KRC'
-
 export const PLAY = 'PLAY'
 export const PAUSE = 'PAUSE'
 export const CHANGETIME = 'CHANGETIME'
-
 export const NEXT = 'NEXIT'
 export const PRE = 'PRE'
 
 
 const musicBox = (obj) => {return { type: MUSICBOX, obj }}
 const musicBoxAdd = (obj) => {return { type: MUSICBOXADD, obj } }
-
-
-
 const currentMusic = (obj) => {return { type:CURRENTMUSIC, obj }}
 const play = (obj) => {return { type:PLAY, obj }}
-// const krc = (obj) => {return { type:KRC, obj }}
 const pause = (obj) => {return { type:PAUSE, obj }}
 const changetime = (obj) => {return { type:CHANGETIME, obj }}
 const next = (obj) => {return { type:NEXT, obj }}
@@ -46,9 +38,6 @@ export function currentMusicAPI(id){
 	 	try{
 	 		let data = await api( Config.musicAPI.replace('HASH',id) );
 	 		let krc = await api( Config.krcAPI.replace('HASH',id).replace('TIMELENGTH',data.timeLength+'000'), 'get', {}, {'Accept':'text/html'});
-		 	// dispatch(music(data))
-		 	// dispatch(krc(krcData))
-		 	// 歌词这里可以处理掉
 		 	let krcArray = []
 		 	krc.split('\n').map((item,index)=>{
 		 		let t = item.substring(1,item.indexOf(']'))
@@ -94,7 +83,6 @@ export function controllAPI(obj){
 		
 	}
 }
-
 
 export function nextAPI(){
 	return dispatch => { 

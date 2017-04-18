@@ -1,4 +1,3 @@
-// import 'whatwg-fetch'
 import Config from '../config'
 import Storage from '../storage'
 

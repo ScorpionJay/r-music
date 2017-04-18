@@ -29,9 +29,9 @@ class App extends Component {
     })
   }
 
-  musicControll(status){
-    const { dispatch } = this.props
-    console.log(status)
+  musicControll(){
+    const { dispatch,controll } = this.props
+    let status = controll === 'play' ? 'pause' : 'play'
     dispatch(controllAPI(status))
     
   }
@@ -94,7 +94,7 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch,data,login,krc,time,music } = this.props
+    const { dispatch,data,login,krc,time,music,controll } = this.props
     const {currentTime ,duration} = this.props.time
     let imgU = music.currentMusic.imgUrl.replace('{size}',400)
 
@@ -134,7 +134,7 @@ class App extends Component {
               </div>
             
 
-            <div>
+            <div style={{padding:'1rem'}}>
               <div style={{display:'flex'}}>
                 <div style={{padding:'0 1rem',color:'#333'}}> {this.formatSeconds(currentTime)} </div>
                 <div style={{display:'flex',flex:1}}>
@@ -142,10 +142,12 @@ class App extends Component {
                 </div>
                 <div style={{padding:'0 .5rem',color:'#333'}}> {this.formatSeconds(duration)} </div> 
               </div>
-
-              <div onClick={()=>this.musicControll('play')}>播放</div>  
-              <div onClick={()=>this.musicControll('pause')}>暂停</div> 
-              <div onClick={()=>this.setState({playList : true})}>列表</div>  
+              
+              <div style={{display:'flex',padding:'1rem',justifyContent: 'space-between',}}>
+                <div onClick={()=>console.log('...')}>...</div>  
+                <div onClick={()=>this.musicControll()}>{ controll === 'play' ?   '暂停' : '播放' }</div> 
+                <div onClick={()=>this.setState({playList : true})}>列表</div> 
+              </div> 
             </div>
 
 
@@ -184,6 +186,7 @@ class Item extends Component {
 function map(state) {
   return {
     music: state.music.musicBox,
+    controll:state.music.controll,
     time:state.music.time
   }
 }

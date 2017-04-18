@@ -11,7 +11,6 @@ export default class Spin extends Component {
 			</div>
 		)
 	}
-
 } 
 
 const Styles = {
