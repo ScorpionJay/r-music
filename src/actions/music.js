@@ -12,6 +12,9 @@ export const PLAY = 'PLAY'
 export const PAUSE = 'PAUSE'
 export const CHANGETIME = 'CHANGETIME'
 
+export const NEXT = 'NEXIT'
+export const PRE = 'PRE'
+
 
 const musicBox = (obj) => {return { type: MUSICBOX, obj }}
 const musicBoxAdd = (obj) => {return { type: MUSICBOXADD, obj } }
@@ -23,7 +26,8 @@ const play = (obj) => {return { type:PLAY, obj }}
 // const krc = (obj) => {return { type:KRC, obj }}
 const pause = (obj) => {return { type:PAUSE, obj }}
 const changetime = (obj) => {return { type:CHANGETIME, obj }}
-
+const next = (obj) => {return { type:NEXT, obj }}
+const pre = (obj) => {return { type:PRE, obj }}
 
 export function musicBoxInit(obj){
 	return dispatch => { 
@@ -60,7 +64,6 @@ export function currentMusicAPI(id){
 		 	let music = {
 		 		krc:krcArray,
 		 		hash:id,
-		 		status:'play',
 		 		url:data.url,
 		 		singerName:data.singerName,
 		 		songName:data.songName,
@@ -93,5 +96,10 @@ export function controllAPI(obj){
 }
 
 
+export function nextAPI(){
+	return dispatch => { 
+		dispatch(next())
+	}
+}
 
 

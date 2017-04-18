@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { changetimeAPI,controllAPI} from '../actions/music';
+import { currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music';
 
 class App extends Component {
 
@@ -12,7 +12,8 @@ class App extends Component {
      const { dispatch,music } = this.props
      const {currentTime ,duration} = this.props.time
     this.state = {
-      slider: duration === 0 ? 0 : currentTime / duration *100
+      slider: duration === 0 ? 0 : currentTime / duration *100,
+      playList:false
     };
   }
 
@@ -80,6 +81,18 @@ class App extends Component {
     
   }
 
+  async playMusic(id){
+    const { dispatch,music } = this.props
+    if( music.currentMusic.hash !== id ){
+      await dispatch(currentMusicAPI(id))
+      await dispatch(changetimeAPI({
+        currentTime: 0,
+        duration: 0
+      }))
+      await dispatch(controllAPI('play'))
+    }
+  }
+
   render() {
     const { dispatch,data,login,krc,time,music } = this.props
     const {currentTime ,duration} = this.props.time
@@ -94,9 +107,9 @@ class App extends Component {
           index:0}
 
     return (
-      <div className='root' >
+      <div className='root'  >
         
-          <div  style={{zIndex:1,position:'absolute',left:0,top:0,right:0,bottom:0,opacity: '0.6'}}>
+          <div  style={{zIndex:1,position:'absolute',left:0,top:0,right:0,bottom:0,opacity: '0.3'}}>
             <div  style={{display: 'flex',maxWidth: '640px',widtt:'100%',height:'100%', margin: '0 auto',backgroundImage:`url(${imgU})`,backgroundSize: 'cover',filter: 'blur(3rem)',backgroundPosition: '50%'}}>
             </div>
           </div>
@@ -110,7 +123,7 @@ class App extends Component {
             </div>
 
             
-              <div className="container" style={{overflowY: 'auto',textAlign:'center',color:'#333',padding:'3rem 0',fontSize:'1.2rem'}}>
+              <div className="container" style={{overflowY: 'auto',textAlign:'center',color:'#333',padding:'3rem 0',fontSize:'1.2rem'}} onClick={()=>this.setState({playList : false})} >
                 {
                   music.currentMusic.krc.map((item)=> 
                     <div style={ Object.assign( {transform: 'translateY('+  (15-s.index*3.3)  +'rem)',transition: 'transform .5s ease',padding:'1rem 0'}, s.time === item.time ? {color:'rgb(206, 61, 62)'} : {} )} >
@@ -125,20 +138,46 @@ class App extends Component {
               <div style={{display:'flex'}}>
                 <div style={{padding:'0 1rem',color:'#333'}}> {this.formatSeconds(currentTime)} </div>
                 <div style={{display:'flex',flex:1}}>
-                  <Slider onChange={(value)=>this.changeSlider(value)}  step={0.1} value={ this.state.slider}/>
+                  <Slider onChange={(value)=>this.changeSlider(value)}  step={0.1} value={ this.state.slider}  onBeforeChange={()=>this.musicControll('pause')} onAfterChange={()=>this.musicControll('play')} />
                 </div>
                 <div style={{padding:'0 .5rem',color:'#333'}}> {this.formatSeconds(duration)} </div> 
               </div>
 
               <div onClick={()=>this.musicControll('play')}>播放</div>  
-              <div onClick={()=>this.musicControll('pause')}>暂停</div>  
+              <div onClick={()=>this.musicControll('pause')}>暂停</div> 
+              <div onClick={()=>this.setState({playList : true})}>列表</div>  
             </div>
 
+
+            <div style={ Object.assign( { position:'fixed',bottom:'0',left:'0',right:'0' } , this.state.playList ? {display:'block'} : {display:'none'})  }>
+            <div style={{minHeight:'30rem',maxWidth: '640px',widtt:'100%',height:'100%',backgroundColor:'#fff', margin: '0 auto'}}>
+                <div style={{textAlign:'center',fontSize:'1.5rem',padding:'1rem',borderBottom:'.01rem solid #ddd'}}>播放列表</div>
+                {
+                 music.musicBox.map((item)=>
+                    <div style={ music.currentMusic.hash === item.hash ? {color:'#ce3d3e'} :{} } >
+                      <Item {...item} play={(id)=>this.playMusic(id)}/>
+                    </div> 
+                  )
+                }
+              </div>
+            </div>
         </div>
        
 
       </div>
     )
+  }
+}
+
+class Item extends Component { 
+
+  render() {
+      const {name,hash} = this.props;
+      return (
+        <div  onClick={()=>this.props.play( this.props.hash )} style={{ padding:'1rem'  }}>
+          {name}
+        </div>
+      )
   }
 }
 
@@ -155,5 +194,7 @@ const Styles = {
     marginBottom:50,
   }
 }
+
+
 
 export default connect(map)(App)

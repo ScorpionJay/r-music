@@ -40,7 +40,7 @@ export default class Audio extends Component {
       return (
         <div>
           {this.props.data.url}
-          <audio src={this.props.data.currentMusic.url}  ref='music' />
+          <audio src={this.props.data.currentMusic.url}  ref='music' onEnded={()=>this.props.nextMusic()}/>
         </div>
       )
   }

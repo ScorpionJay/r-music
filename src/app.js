@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Spin from './components/common/Spin';
 import Message from './components/common/Message';
 import Audio from './components/music/audio';
-import { changetimeAPI } from './actions/music';
+import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI,nextAPI } from './actions/music';
 class App extends Component{
 
 	getCur(t){
@@ -23,6 +23,19 @@ class App extends Component{
 		}))
 	}
 
+	async nextMusic(){
+		const { dispatch } = this.props
+		await dispatch(nextAPI())
+		const { music } = this.props
+    	await dispatch(currentMusicAPI(music.currentMusic.hash))
+	    await dispatch(changetimeAPI({
+	      currentTime: 0,
+	      duration: 0
+	    }))
+    	await dispatch(controllAPI('play'))
+		
+	}
+
 
 	render(){
 		const {music,time,controll,spin,message} = this.props;
@@ -32,7 +45,7 @@ class App extends Component{
 				<Message data={message}/>
 				<div className='root'>{this.props.children}</div>
 
-				<Audio data={music} getCur={(e)=>this.getCur(e)} time={time} changeTime={()=>this.changeTime() } 
+				<Audio data={music} getCur={(e)=>this.getCur(e)} time={time} changeTime={()=>this.changeTime()} nextMusic={()=>this.nextMusic()}
 				controll={controll} />
 			
 			</div>

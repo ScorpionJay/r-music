@@ -26,15 +26,17 @@ class App extends Component {
   }
 
 
-  async musicBoxAdd(music){
-    const { dispatch } = this.props
-    await dispatch(musicBoxAddAPI(music))
-    await dispatch(currentMusicAPI(music.hash))
-    await dispatch(changetimeAPI({
-      currentTime: 0,
-      duration: 0
-    }))
-    await dispatch(controllAPI('play'))
+  async musicBoxAdd(m){
+    const { dispatch,music } = this.props
+    if( music.currentMusic.hash !== m.hash ){
+      await dispatch(musicBoxAddAPI(m))
+      await dispatch(currentMusicAPI(m.hash))
+      await dispatch(changetimeAPI({
+        currentTime: 0,
+        duration: 0
+      }))
+      await dispatch(controllAPI('play'))
+    }
     browserHistory.push('play')
   }
 
@@ -65,6 +67,7 @@ class App extends Component {
 function map(state) {
   return {
     data: state.playList.playList,
+    music: state.music.musicBox,
     login: state.login.login
   }
 }
