@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router'
 import Nav from '../components/common/Nav'
 import Album from '../components/music/album'
 import { albumListAPI } from '../actions/album'
+import Beat from '../components/music/beat'
 import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music'
 
 class App extends Component {
@@ -33,14 +34,16 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch,data,login } = this.props
+    const { dispatch,data,login,controll } = this.props
     return (
       <div className='root'>
 
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}>返回</div>
           <div style={{display:'flex',flex:1,justifyContent: 'center'}}>歌单</div>
-          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>...</Link>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>
+            <Beat  beat={controll === 'play'} />
+          </Link>
         </div>
         
         <div className="container">
@@ -58,6 +61,7 @@ function map(state) {
   return {
     data: state.album.albumList,
     music: state.music.musicBox,
+    controll:state.music.controll,
     login: state.login.login
   }
 }

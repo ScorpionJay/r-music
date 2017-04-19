@@ -1,0 +1,55 @@
+@keyframes beat {
+  from, 1%, to {
+    height: .6rem
+  }
+  50% {
+    height: 1.2rem
+  }
+  100% {
+    height: .6rem
+  }
+}
+
+@keyframes beat2 {
+  from, 1%, to {
+    height: 1.2rem
+  }
+  50% {
+    height: .6rem
+  }
+  100% {
+    height: 1.2rem
+  }
+}
+
+.beat{
+  display: flex;
+  height:1.6rem;
+  width: 2rem;
+  align-items: flex-end;
+  justify-content: space-around;
+
+  div {
+    background-color: #fff;
+    width: .14rem
+  }
+
+  div:nth-child(odd) {
+    height:1.2rem
+  }
+
+  div:nth-child(even) {
+    height:.6rem
+  }
+
+}
+
+.t>div:nth-child(even){
+  animation: beat 1s infinite
+}
+.t>div:nth-child(odd){
+  animation: beat2 1s infinite
+}
+
+
+

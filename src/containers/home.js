@@ -6,6 +6,7 @@ import Nav from '../components/common/Nav'
 import RecommendList from '../components/music/recommendList'
 import SwipeableViews from 'react-swipeable-views'
 import { Link } from 'react-router'
+import Beat from '../components/music/beat'
 
 class App extends Component {
 
@@ -36,7 +37,7 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch,data,login } = this.props
+    const { dispatch,data,login,controll} = this.props
     const {
       index,
     } = this.state;
@@ -47,7 +48,9 @@ class App extends Component {
           
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}></div>
           <div style={{display:'flex',flex:2,justifyContent: 'center'}}>首页</div>
-          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>...</Link>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>
+            <Beat  beat={controll === 'play'} />
+          </Link>
         </div>
 
         <div className='homeTab'>
@@ -91,7 +94,8 @@ class App extends Component {
 function map(state) {
   return {
     data: state.home.home,
-    login: state.login.login
+    login: state.login.login,
+    controll:state.music.controll
   }
 }
 
