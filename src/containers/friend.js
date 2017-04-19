@@ -9,7 +9,6 @@ class App extends Component {
     const { dispatch } = this.props
     dispatch(homeAPI())
   }
-// <Slider data={data.slider} />
   render() {
     const { dispatch,data,login } = this.props
     return (
@@ -20,7 +19,7 @@ class App extends Component {
         </div>
 
         <div className="container">
-          暂未开发
+          TODO
         </div>
 
         <Nav/>
@@ -34,13 +33,6 @@ function map(state) {
   return {
     data: state.home.home,
     login: state.login.login
-  }
-}
-
-const Styles = {
-  content:{
-    marginTop:50,
-    marginBottom:50,
   }
 }
 

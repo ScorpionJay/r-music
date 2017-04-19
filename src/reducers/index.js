@@ -5,8 +5,8 @@ import  spin from './spin'
 import  message from './message'
 import  dialog from './dialog'
 import  user from './user'
-import  playList from './playList';
-import  music from './music';
+import  album from './album'
+import  music from './music'
 
 const reducers = combineReducers({
   home,
@@ -15,7 +15,7 @@ const reducers = combineReducers({
   message,
   dialog,
   user,
-  playList,
+  album,
   music
 })
 

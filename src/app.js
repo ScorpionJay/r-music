@@ -1,9 +1,10 @@
-import React , {Component } from 'react';
-import { connect } from 'react-redux';
-import Spin from './components/common/Spin';
-import Message from './components/common/Message';
-import Audio from './components/music/audio';
-import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI,nextAPI } from './actions/music';
+import React , {Component } from 'react'
+import { connect } from 'react-redux'
+import Spin from './components/common/Spin'
+import Message from './components/common/Message'
+import Audio from './components/music/audio'
+import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI,nextAPI } from './actions/music'
+
 class App extends Component{
 
 	getCur(t){
@@ -33,9 +34,7 @@ class App extends Component{
 	      duration: 0
 	    }))
     	await dispatch(controllAPI('play'))
-		
 	}
-
 
 	render(){
 		const {music,time,controll,spin,message} = this.props;
@@ -55,7 +54,6 @@ class App extends Component{
 
 function map(state) {
   return {
-  	// music: state.playList.music,
   	music: state.music.musicBox,
   	time:state.music.time,
   	controll:state.music.controll,
@@ -64,4 +62,4 @@ function map(state) {
   };
 }
 
-export default connect(map)(App);
+export default connect(map)(App)

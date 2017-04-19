@@ -19,7 +19,7 @@ class App extends Component {
         </div>
 
         <div className="container">
-         123
+         TODO
         </div>
 
         <Nav/>
@@ -33,13 +33,6 @@ function map(state) {
   return {
     data: state.home.home,
     login: state.login.login
-  }
-}
-
-const Styles = {
-  content:{
-    marginTop:50,
-    marginBottom:50,
   }
 }
 

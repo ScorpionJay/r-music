@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { homeAPI } from '../actions/home'
 import Slider from '../components/common/slider'
-import Nav from '../components/common/Nav';
-import MusicList from '../components/music/musicList';
-import SwipeableViews from 'react-swipeable-views';
-import { Link } from 'react-router';
+import Nav from '../components/common/Nav'
+import RecommendList from '../components/music/recommendList'
+import SwipeableViews from 'react-swipeable-views'
+import { Link } from 'react-router'
 
 class App extends Component {
 
@@ -66,16 +66,16 @@ class App extends Component {
           <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
             <div>
                 <Slider data={data.slider} />
-                <MusicList data={data.recommendMusics}/>
+                <RecommendList data={data.recommendMusics}/>
             </div>
             <div>
-              todo
+              TODO
             </div>
-            <div >
-              todo
+            <div>
+              TODO
             </div>
-            <div >
-              todo
+            <div>
+              TODO
             </div>
           </SwipeableViews>
 
@@ -92,13 +92,6 @@ function map(state) {
   return {
     data: state.home.home,
     login: state.login.login
-  }
-}
-
-const Styles = {
-  content:{
-    marginTop:50,
-    marginBottom:50,
   }
 }
 

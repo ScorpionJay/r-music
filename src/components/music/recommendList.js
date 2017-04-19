@@ -1,7 +1,6 @@
 /**
 * 推荐歌单组件
 */
-
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
@@ -13,7 +12,7 @@ export default class MusicList extends Component {
       return (
         <div >
           <div className='recommod'>
-            <span>推荐歌单</span>
+            <span style={{lineHeight: '1.6rem'}}>推荐歌单</span>
             <span className='arrow-right'></span>
           </div>
           <div style={Styles.container}>

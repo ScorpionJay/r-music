@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-import { currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
+import { currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music'
 
 class App extends Component {
 
@@ -173,12 +173,14 @@ class App extends Component {
   }
 }
 
+/**
+* 播放列表详情组件
+*/
 class Item extends Component { 
-
   render() {
-      const {name,hash} = this.props;
+      const {name,hash,play} = this.props
       return (
-        <div  onClick={()=>this.props.play( this.props.hash )} style={{ padding:'1rem'  }}>
+        <div  onClick={()=>play( hash )} style={{ padding:'1rem' }}>
           {name}
         </div>
       )
@@ -192,14 +194,5 @@ function map(state) {
     time:state.music.time
   }
 }
-
-const Styles = {
-  content:{
-    marginTop:50,
-    marginBottom:50,
-  }
-}
-
-
 
 export default connect(map)(App)

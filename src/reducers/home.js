@@ -10,17 +10,17 @@ let homeVo = {
   ],
   recommendMusics: [
     {
-      "collectcount":2243,
+      "collectcount":0,
       "imgurl":"",
       "intro":"",
-      "playcount":1499235,
+      "playcount":0,
       "publishtime":"",
       "singername":"",
-      "slid":29,
-      "songcount":19,
-      "specialid":123275,
+      "slid":0,
+      "songcount":0,
+      "specialid":0,
       "specialname":"",
-      "suid":509004763,
+      "suid":0,
       "username":"",
       "verified":0
     }

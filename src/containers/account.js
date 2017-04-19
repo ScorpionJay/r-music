@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { homeAPI } from '../actions/home'
+import Nav from '../components/common/Nav'
 
-import Nav from '../components/common/Nav';
 class App extends Component {
 
   componentDidMount(){
     const { dispatch } = this.props
     dispatch(homeAPI())
   }
-// <Slider data={data.slider} />
+
   render() {
     const { dispatch,data,login } = this.props
     return (
@@ -20,7 +20,7 @@ class App extends Component {
         </div>
 
         <div className="container">
-          暂未开发
+          TODO
         </div>
 
         <Nav/>

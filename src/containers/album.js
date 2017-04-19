@@ -1,20 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import { connect } from 'react-redux';
-import { playListAPI } from '../actions/playList';
-
-import { browserHistory } from 'react-router';
-import Nav from '../components/common/Nav';
-import Album from '../components/music/album';
-
-import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music';
+import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
+import Nav from '../components/common/Nav'
+import Album from '../components/music/album'
+import { albumListAPI } from '../actions/album'
+import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music'
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-  
-  }
 
   back(){
       browserHistory.goBack()
@@ -22,9 +15,8 @@ class App extends Component {
 
   componentDidMount(){
     const { dispatch } = this.props
-    dispatch(playListAPI(this.props.params.id))
+    dispatch(albumListAPI(this.props.params.id))
   }
-
 
   async musicBoxAdd(m){
     const { dispatch,music } = this.props
@@ -51,7 +43,6 @@ class App extends Component {
           <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>...</Link>
         </div>
         
-
         <div className="container">
           <Album data={data} addMusic={(music) => this.musicBoxAdd(music)}/>
         </div>
@@ -65,16 +56,9 @@ class App extends Component {
 
 function map(state) {
   return {
-    data: state.playList.playList,
+    data: state.album.albumList,
     music: state.music.musicBox,
     login: state.login.login
-  }
-}
-
-const Styles = {
-  content:{
-    marginTop:50,
-    marginBottom:50,
   }
 }
 

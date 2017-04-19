@@ -3,10 +3,7 @@ import { connect } from 'react-redux'
 import { loginFetch } from '../actions/login'
 import { browserHistory } from 'react-router'
 import { Link } from 'react-router'
-
 import {alert} from '../actions/message'
-
-
 
 class Login extends Component {
 
@@ -75,10 +72,6 @@ function map(state) {
     data: state.home.fetchList,
     message:state.message.message
   }
-}
-
-const Styles = {
-
 }
 
 export default connect(map)(Login)
