@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { homeAPI } from '../actions/home'
-
-import Slider from '../components/home/slider'
-
-import Nav from '../components/common/Nav';
+import Nav from '../components/common/Nav'
 class App extends Component {
 
   componentDidMount(){
@@ -22,7 +19,7 @@ class App extends Component {
         </div>
 
         <div className="container">
-         123
+         TODO
         </div>
 
         <Nav/>
@@ -36,13 +33,6 @@ function map(state) {
   return {
     data: state.home.home,
     login: state.login.login
-  }
-}
-
-const Styles = {
-  content:{
-    marginTop:50,
-    marginBottom:50,
   }
 }
 

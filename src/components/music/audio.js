@@ -3,16 +3,17 @@ import React, { Component, PropTypes } from 'react';
 export default class Audio extends Component { 
   
   componentDidUpdate(){
-    const { dispatch } = this.props
-
+    const { dispatch ,time} = this.props
+    
     // 播放状态 play pause 
     this.timer && clearTimeout(this.timer)
-    switch(this.props.play) {
+    if( this.props.time.changeTimeFlag ){
+      this.refs.music.currentTime = this.props.time.currentTime
+    }
+
+    switch(this.props.controll) {
       case 'play':
-            
-            // 有卡顿现象，这里需要判断 TODO
-            this.refs.music.currentTime = this.props.time
-           
+            if(this.props.data.currentMusic.url === '')return
             this.refs.music.play()
             this.timer = setInterval(
               () => {
@@ -22,7 +23,7 @@ export default class Audio extends Component {
                   this.props.getCur( this.refs.music  )
                 }
               },
-              1000
+              100
             )
         break;
       case 'pause':
@@ -31,15 +32,13 @@ export default class Audio extends Component {
         break;
     }
 
-
-
-
   }
 
   render() {
       return (
         <div>
-          <audio src={this.props.src}  ref='music' />
+          {this.props.data.url}
+          <audio src={this.props.data.currentMusic.url}  ref='music' onEnded={()=>this.props.nextMusic()}/>
         </div>
       )
   }

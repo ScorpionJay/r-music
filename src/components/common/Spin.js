@@ -1,4 +1,4 @@
-import React ,{Component} from 'react';
+import React ,{Component} from 'react'
 
 export default class Spin extends Component {
 
@@ -11,7 +11,6 @@ export default class Spin extends Component {
 			</div>
 		)
 	}
-
 } 
 
 const Styles = {
@@ -26,7 +25,7 @@ const Styles = {
 		alignItems:'center',
 	    color: 'rgb(51, 51, 51)',
 	    backgroundColor: '#b1abab',
-	    zIndex: 2,
+	    zIndex: 9999,
 	    opacity:'0.8'
 	}
 }

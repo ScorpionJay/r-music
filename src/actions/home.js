@@ -4,6 +4,7 @@ import api from '../api'
 
 export const HOME = 'HOME'
 export const RECOMMENDMUSIC = 'RECOMMENDMUSIC'
+
 export const home = (obj) =>{
 	return {
 		type: HOME,

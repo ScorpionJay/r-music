@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { homeAPI } from '../actions/home'
-import Slider from '../components/home/slider'
-import Nav from '../components/common/Nav';
-import MusicList from '../components/music/musicList';
-import SwipeableViews from 'react-swipeable-views';
-import { Link } from 'react-router';
+import Slider from '../components/common/slider'
+import Nav from '../components/common/Nav'
+import RecommendList from '../components/music/recommendList'
+import SwipeableViews from 'react-swipeable-views'
+import { Link } from 'react-router'
 
 class App extends Component {
 
@@ -47,7 +47,7 @@ class App extends Component {
           
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}></div>
           <div style={{display:'flex',flex:2,justifyContent: 'center'}}>首页</div>
-          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/playInfo'>...</Link>
+          <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>...</Link>
         </div>
 
         <div className='homeTab'>
@@ -66,20 +66,16 @@ class App extends Component {
           <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
             <div>
                 <Slider data={data.slider} />
-                <div className='recommod'>
-                  <span>推荐歌单</span>
-                  <span className='arrow-right'></span>
-                </div>
-                <MusicList data={data.recommendMusics}/>
+                <RecommendList data={data.recommendMusics}/>
             </div>
             <div>
-              todo
+              TODO
             </div>
-            <div >
-              todo
+            <div>
+              TODO
             </div>
-            <div >
-              todo
+            <div>
+              TODO
             </div>
           </SwipeableViews>
 
@@ -96,13 +92,6 @@ function map(state) {
   return {
     data: state.home.home,
     login: state.login.login
-  }
-}
-
-const Styles = {
-  content:{
-    marginTop:50,
-    marginBottom:50,
   }
 }
 

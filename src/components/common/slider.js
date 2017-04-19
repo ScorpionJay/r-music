@@ -22,14 +22,10 @@ export default class SimpleSlider extends Component {
             data.map((item) => <div><SliderItem {...item}/></div>)
           }
         </Slider>
-
-        
-
       </div>
     )
   }
 }
-
 
 class SliderItem extends Component { 
   render() {

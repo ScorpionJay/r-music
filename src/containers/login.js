@@ -3,13 +3,7 @@ import { connect } from 'react-redux'
 import { loginFetch } from '../actions/login'
 import { browserHistory } from 'react-router'
 import { Link } from 'react-router'
-
 import {alert} from '../actions/message'
-
-import HomeTop from '../components/home/homeTop'
-import Footer from '../components/home/footer'
-import Tool from '../components/home/tool'
-
 
 class Login extends Component {
 
@@ -34,7 +28,6 @@ class Login extends Component {
     const { dispatch,data,message } = this.props
     return (
       <div className='loginC'>
-           <HomeTop/>
 
            <div className="container">
             <div className="innerbox">
@@ -62,16 +55,12 @@ class Login extends Component {
                       </li>
                     </ul>
                 </div>
-                <div className="logImages">
-                  <img width="500" height="370" alt="login background" src={require('../images/loginad.png')} />
-                </div>
+               
               </div>
             </div>
           </div>
 
 
-        <Tool/>
-        <Footer />
 
       </div>
     )
@@ -83,10 +72,6 @@ function map(state) {
     data: state.home.fetchList,
     message:state.message.message
   }
-}
-
-const Styles = {
-
 }
 
 export default connect(map)(Login)

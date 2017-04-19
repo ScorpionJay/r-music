@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "r-music",
   "version": "1.0.0",
-  "description": "react boilerplate",
+  "description": "react music",
   "main": "index.js",
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
@@ -13,12 +13,13 @@
     "clean:dist": "rimraf dist",
     "clean:dev": "rimraf dev",
     "test": "jest",
-    "start": "webpack-dev-server --config webpack.config.js --hot",
-    "serve:prod": "webpack-dev-server --config config/webpack.prod.js --hot"
+    "dev": "webpack-dev-server --config webpack.config.js --hot",
+    "serve:prod": "webpack-dev-server --config config/webpack.prod.js --hot",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ScorpionJay/react-web-demo.git"
+    "url": "git+ssh://git@github.com/ScorpionJay/r-music.git"
   },
   "keywords": [
     "reactjs",
@@ -29,9 +30,9 @@
   "author": "jay",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ScorpionJay/react-web-demo/issues"
+    "url": "https://github.com/ScorpionJay/r-music/issues"
   },
-  "homepage": "https://github.com/ScorpionJay/react-web-demo#readme",
+  "homepage": "https://github.com/ScorpionJay/r-music#readme",
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-eslint": "^7.2.1",
@@ -62,11 +63,12 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "compression": "^1.6.2",
+    "express": "^4.15.2",
+    "http-proxy-middleware": "^0.17.4"
   },
   "dependencies": {
-    "jquery": "^3.1.1",
-    "material-ui": "^0.17.3",
     "rc-slider": "^7.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
