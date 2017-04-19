@@ -42,7 +42,6 @@ class App extends Component {
 
   render() {
     const { dispatch,data,login } = this.props
-    console.log(data)
     return (
       <div className='root'>
 

@@ -13,6 +13,7 @@ export default class Audio extends Component {
 
     switch(this.props.controll) {
       case 'play':
+            if(this.props.data.currentMusic.url === '')return
             this.refs.music.play()
             this.timer = setInterval(
               () => {

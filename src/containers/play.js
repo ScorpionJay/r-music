@@ -30,7 +30,9 @@ class App extends Component {
   }
 
   musicControll(){
-    const { dispatch,controll } = this.props
+    const { dispatch,controll,music } = this.props
+    // no music
+    if( music.currentMusic.hash === '' ) return 
     let status = controll === 'play' ? 'pause' : 'play'
     dispatch(controllAPI(status))
     
