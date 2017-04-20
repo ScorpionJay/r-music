@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import Slider from 'rc-slider'
+import {PlayBtn,StopBtn,ListBtn,PreBtn,NextBtn} from '../components/music/musicBtn'
 import 'rc-slider/assets/index.css'
 import { currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music'
 
@@ -111,24 +112,25 @@ class App extends Component {
     return (
       <div className='root'  >
         
-          <div  style={{zIndex:1,position:'absolute',left:0,top:0,right:0,bottom:0,opacity: '0.3'}}>
+          <div  style={{zIndex:1,position:'absolute',left:0,top:0,right:0,bottom:0}}>
             <div  style={{display: 'flex',maxWidth: '640px',widtt:'100%',height:'100%', margin: '0 auto',backgroundImage:`url(${imgU})`,backgroundSize: 'cover',filter: 'blur(3rem)',backgroundPosition: '50%'}}>
             </div>
+            <div style={{zIndex:3,position:'absolute',left:0,top:0,right:0,bottom:0,opacity: '0.7',backgroundColor:'#555'}}></div>
           </div>
 
           <div style={{height:'100%',zIndex:10,display: 'flex',flexDirection: 'column'}}>
 
-            <div className="header" style={{backgroundColor:'transparent',color:'#333',display:'flex',justifyContent: 'space-between',padding:'0 1rem',borderBottom:'.01rem solid #eee'}}>
+            <div className="header" style={{backgroundColor:'transparent',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem',borderBottom:'.01rem solid #999'}}>
               <div onClick={()=>browserHistory.goBack()} style={{display:'flex',flex:1}}>返回</div>
               <div style={{display:'flex',flex:3,justifyContent: 'center'}}>{ music.currentMusic.songName }</div>
               <div style={{display:'flex',flex:1}}></div>
             </div>
 
             
-              <div className="container" style={{overflowY: 'auto',textAlign:'center',color:'#333',padding:'3rem 0',fontSize:'1.2rem'}} onClick={()=>this.setState({playList : false})} >
+              <div className="container" style={{overflowY: 'auto',textAlign:'center',color:'#aaa',padding:'3rem 0',fontSize:'1.2rem'}} onClick={()=>this.setState({playList : false})} >
                 {
                   music.currentMusic.krc.map((item)=> 
-                    <div style={ Object.assign( {transform: 'translateY('+  (15-s.index*3.3)  +'rem)',transition: 'transform .5s ease',padding:'1rem 0'}, s.time === item.time ? {color:'rgb(206, 61, 62)'} : {} )} >
+                    <div style={ Object.assign( {transform: 'translateY('+  (15-s.index*3.3)  +'rem)',transition: 'transform .5s ease',padding:'1rem 0'}, s.time === item.time ? {color:'#fff'} : {} )} >
                       {item.str}
                     </div>
                   )
@@ -138,17 +140,19 @@ class App extends Component {
 
             <div style={{padding:'1rem'}}>
               <div style={{display:'flex'}}>
-                <div style={{padding:'0 1rem',color:'#333'}}> {this.formatSeconds(currentTime)} </div>
+                <div style={{padding:'0 1rem',color:'#fff'}}> {this.formatSeconds(currentTime)} </div>
                 <div style={{display:'flex',flex:1}}>
                   <Slider onChange={(value)=>this.changeSlider(value)}  step={0.1} value={ this.state.slider}  onBeforeChange={()=>this.musicControll('pause')} onAfterChange={()=>this.musicControll('play')} />
                 </div>
-                <div style={{padding:'0 .5rem',color:'#333'}}> {this.formatSeconds(duration)} </div> 
+                <div style={{padding:'0 .5rem',color:'#fff'}}> {this.formatSeconds(duration)} </div> 
               </div>
               
               <div style={{display:'flex',padding:'1rem',justifyContent: 'space-between',}}>
-                <div onClick={()=>console.log('...')}>...</div>  
-                <div onClick={()=>this.musicControll()}>{ controll === 'play' ?   '暂停' : '播放' }</div> 
-                <div onClick={()=>this.setState({playList : true})}>列表</div> 
+                <div onClick={()=>console.log('...')}>.</div> 
+                <div onClick={()=>console.log('...')}><PreBtn/></div>  
+                <div onClick={()=>this.musicControll()}>{ controll === 'play' ?   <StopBtn /> : <PlayBtn /> }</div>
+                <div onClick={()=>console.log('...')}><NextBtn/></div>  
+                <div onClick={()=>this.setState({playList : true})}><ListBtn/></div> 
               </div> 
             </div>
 

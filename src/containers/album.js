@@ -30,7 +30,7 @@ class App extends Component {
       }))
       await dispatch(controllAPI('play'))
     }
-    browserHistory.push('play')
+    await browserHistory.push('play')
   }
 
   render() {
