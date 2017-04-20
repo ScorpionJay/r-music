@@ -76,6 +76,7 @@
     "react-slick": "^0.14.5",
     "react-swipeable-views": "^0.12.0",
     "react-tap-event-plugin": "^2.0.1",
+    "reactjs-iscroll": "0.3.2",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0",
