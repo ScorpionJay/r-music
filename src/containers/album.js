@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch,data,login,controll } = this.props
+    const { dispatch,data,login,controll,music } = this.props
     return (
       <div className='root'>
 
@@ -37,7 +37,7 @@ class App extends Component {
         </div>
         
         <div className="container">
-          <Album data={data} addMusic={(music) => this.musicBoxAdd(music)}/>
+          <Album data={data} addMusic={(m) => this.musicBoxAdd(m)} currentHash={music.currentMusic.hash}/>
         </div>
 
         <Nav/>

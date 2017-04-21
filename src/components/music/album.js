@@ -24,7 +24,7 @@ export default class Album extends Component {
             </div>
             {
               this.props.data.list.map((obj,index)=>
-                  <Item index={index+1}  {...obj}  addMusic={(music) => this.props.addMusic(music) } />
+                  <Item index={index+1}  {...obj}  addMusic={(music) => this.props.addMusic(music) }  currentHash={this.props.currentHash}/>
               )
             }
         </div>
@@ -45,9 +45,9 @@ class Item extends Component {
   }
 
   render() {
-      const {filename,imgurl,intro,playcount,hash,index} = this.props;
+      const {filename,imgurl,intro,playcount,hash,index,currentHash} = this.props;
       return (
-        <div style={Styles.ItemContainer}  onClick={()=> this.addMusic() } >
+        <div style={Object.assign( {},Styles.ItemContainer,  currentHash === hash ? {color:'rgb(206, 61, 62)'} : {} )}  onClick={()=> this.addMusic() } >
           <div style={Styles.index}>{index}</div>
           <div style={Styles.name}>{filename}</div>
         </div>
@@ -93,13 +93,14 @@ const Styles = {
     color:'#333'
   },
   index:{
-    padding:'0 .6rem'
+    padding:'1rem .6rem',
+    fontSize:'1.2rem'
   },
   name:{
     display:'flex',
     flex:1,
-  },
-  name:{
-    borderBottom:'.1rem solid #333'
+    borderBottom:'.1rem solid #333',
+    padding:'1rem .2rem',
+    marginLeft:'1rem'
   }
 }

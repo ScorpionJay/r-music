@@ -8,10 +8,10 @@ export default class Audio extends Component {
     if( this.props.time.changeTimeFlag ){
       this.refs.music.currentTime = this.props.time.currentTime
     }
-    // alert(this.props.controll)
     switch(this.props.controll) {
       case 'play':
             if(this.props.data.currentMusic.url === '')return
+              // alert(this.props.controll)
             this.refs.music.play()
         break;
       case 'pause':
@@ -27,8 +27,11 @@ export default class Audio extends Component {
   render() {
       return (
         <div>
-          {this.props.data.url}
-          <audio src={this.props.data.currentMusic.url}  ref='music' onEnded={()=>this.props.nextMusic()} onTimeUpdate={()=>this.update()}  onCanplay={()=>alert('over')} />
+          <audio 
+            src={this.props.data.currentMusic.url}
+            ref='music'
+            onEnded={()=>this.props.changeMusic()} 
+            onTimeUpdate={()=>this.update()}  />
         </div>
       )
   }

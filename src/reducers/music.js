@@ -40,26 +40,6 @@ function musicBox(state = vo, action) {
     case CURRENTMUSIC:// 音乐盒当前音乐
       state.currentMusic = action.obj
       return state
-    case NEXT:// 下一首
-      let index = 0
-      if(state.musicBox.length === 1){
-        index = 0
-      }else{
-        for(let i=0; i<state.musicBox.length; i++){
-          if(state.musicBox[i].hash === state.currentMusic.hash){
-            index = i;
-            break
-          }
-        }
-        if( index === state.musicBox.length-1){
-          index = 0
-        }else{
-          index = index+1
-        }
-      }
-
-      state.currentMusic = state.musicBox[index]
-      return state
     default:
       return state
   }

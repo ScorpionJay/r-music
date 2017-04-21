@@ -16,6 +16,13 @@ const Routes = {
 		{ path: 'home',
 		  component:Home
 		},
+		{ path: 'music',
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/music').default)
+			})
+		   }
+		},
 		{ path: 'friend',
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{

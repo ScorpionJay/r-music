@@ -8,9 +8,6 @@ export const CURRENTMUSIC = 'CURRENTMUSIC'
 export const PLAY = 'PLAY'
 export const PAUSE = 'PAUSE'
 export const CHANGETIME = 'CHANGETIME'
-export const NEXT = 'NEXIT'
-export const PRE = 'PRE'
-
 
 const musicBox = (obj) => {return { type: MUSICBOX, obj }}
 const musicBoxAdd = (obj) => {return { type: MUSICBOXADD, obj } }
@@ -18,8 +15,6 @@ const currentMusic = (obj) => {return { type:CURRENTMUSIC, obj }}
 const play = (obj) => {return { type:PLAY, obj }}
 const pause = (obj) => {return { type:PAUSE, obj }}
 const changetime = (obj) => {return { type:CHANGETIME, obj }}
-const next = (obj) => {return { type:NEXT, obj }}
-const pre = (obj) => {return { type:PRE, obj }}
 
 export function musicBoxInit(obj){
 	return dispatch => { 
@@ -35,7 +30,7 @@ export function musicBoxAddAPI(obj){
 
 export function currentMusicAPI(id){
 	return async dispatch => {
-		dispatch(spin());
+		// dispatch(spin());
 	 	try{
 	 		let data = await api( Config.musicAPI.replace('HASH',id) );
 	 		let krc = await api( Config.krcAPI.replace('HASH',id).replace('TIMELENGTH',data.timeLength+'000'), 'get', {}, {'Accept':'text/html'});
@@ -65,8 +60,8 @@ export function currentMusicAPI(id){
       			name:data.songName
 		 	}))
 		 	await dispatch(currentMusic(music));
-		 	await dispatch(controllAPI('play'))
-		 	dispatch(spinHidden());
+			await dispatch(controllAPI('play'))
+		 	// dispatch(spinHidden());
 		 }catch(error){
 			console.log('error',error);
 		}
@@ -80,6 +75,7 @@ export function changetimeAPI(obj){
 	}
 }
 
+
 export function controllAPI(obj){
 	return dispatch => { 
 		if( obj === 'play' ){
@@ -91,10 +87,37 @@ export function controllAPI(obj){
 	}
 }
 
-export function nextAPI(){
+export function changeMusicAPI(state,type){
 	return dispatch => { 
-		dispatch(next())
+      let index = 0
+      if(state.musicBox.length === 1){
+        index = 0
+      }else{
+        for(let i=0; i<state.musicBox.length; i++){
+          if(state.musicBox[i].hash === state.currentMusic.hash){
+            index = i;
+            break
+          }
+        }
+
+        if(type !== 'pre'){
+        	if( index === state.musicBox.length-1){
+	          index = 0
+	        }else{
+	          index = index+1
+	        }
+        }else{
+			if( index === 0  ){
+	          index = state.musicBox.length-1
+	        }else{
+	          index = index-1
+	        }
+        }
+
+      }
+	  dispatch(currentMusicAPI(state.musicBox[index].hash))
 	}
 }
+
 
 

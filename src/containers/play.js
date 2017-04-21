@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router'
 import Slider from 'rc-slider'
 import {PlayBtn,StopBtn,ListBtn,PreBtn,NextBtn} from '../components/music/musicBtn'
 import 'rc-slider/assets/index.css'
-import { currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music'
+import { currentMusicAPI,changetimeAPI,controllAPI,changeMusicAPI } from '../actions/music'
 
 class App extends Component {
 
@@ -153,26 +153,29 @@ class App extends Component {
               </div>
               
               <div style={{display:'flex',padding:'1rem',justifyContent: 'space-between',}}>
-                <div onClick={()=>console.log('...')}>.</div> 
-                <div onClick={()=>console.log('...')}><PreBtn/></div>  
+                <div onClick={()=>console.log('...')}> </div> 
+                <div onClick={()=>this.props.dispatch(changeMusicAPI(music,'pre'))}><PreBtn/></div>  
                 <div onClick={()=>this.musicControll()}>{ controll === 'play' ?   <StopBtn /> : <PlayBtn /> }</div>
-                <div onClick={()=>console.log('...')}><NextBtn/></div>  
+                <div onClick={()=>this.props.dispatch(changeMusicAPI(music))}><NextBtn/></div>  
                 <div onClick={()=>this.setState({playList : true})}><ListBtn/></div> 
               </div> 
             </div>
 
 
-            <div style={ Object.assign( { position:'fixed',bottom:'0',left:'0',right:'0' } , this.state.playList ? {display:'block'} : {display:'none'})  }>
-            <div style={{minHeight:'30rem',maxWidth: '640px',widtt:'100%',height:'100%',backgroundColor:'#fff', margin: '0 auto'}}>
-                <div style={{textAlign:'center',fontSize:'1.5rem',padding:'1rem',borderBottom:'.01rem solid #ddd'}}>播放列表</div>
-                {
-                 music.musicBox.map((item)=>
-                    <div style={ music.currentMusic.hash === item.hash ? {color:'#ce3d3e'} :{} } >
-                      <Item {...item} play={(id)=>this.playMusic(id)}/>
-                    </div> 
-                  )
-                }
-              </div>
+             <div className="container" style={ Object.assign( { position:'fixed',bottom:'0',left:'0',right:'0',maxHeight:'30rem',maxWidth: '640px',margin: '0 auto', } , this.state.playList ? {display:'block'} : {display:'none'})  }>
+                <div style={{minHeight:'25rem',maxWidth: '640px',widtt:'100%',height:'100%',backgroundColor:'#fff', margin: '0 auto'}}>
+                    <div style={{textAlign:'center',fontSize:'1.5rem',padding:'1rem',borderBottom:'.01rem solid #ddd'}}>
+                      播放列表  { music.currentMusic.hash ===''? '(0)' : `(${music.musicBox.length})`}
+                    </div>
+                    {
+                     music.musicBox.map((item)=>
+                        <div style={ music.currentMusic.hash === item.hash ? {color:'#ce3d3e'} :{} } >
+                          <Item {...item} play={(id)=>this.playMusic(id)}/>
+                        </div> 
+                      )
+                    }
+                </div>
+
             </div>
         </div>
        

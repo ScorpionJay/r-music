@@ -10,7 +10,7 @@ module.exports = function(initialState) {
 		createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 	}else{
 		const logger = createLogger();
-		createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+		createStoreWithMiddleware = applyMiddleware(thunk,logger)(createStore);
 	}
 	let store = createStoreWithMiddleware(reducers, initialState);
 	// get token from storage
