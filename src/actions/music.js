@@ -35,11 +35,12 @@ export function musicBoxAddAPI(obj){
 
 export function currentMusicAPI(id){
 	return async dispatch => {
+		dispatch(spin());
 	 	try{
 	 		let data = await api( Config.musicAPI.replace('HASH',id) );
 	 		let krc = await api( Config.krcAPI.replace('HASH',id).replace('TIMELENGTH',data.timeLength+'000'), 'get', {}, {'Accept':'text/html'});
 		 	let krcArray = []
-		 	krc.split('\n').map((item,index)=>{
+		 	await krc.split('\n').map((item,index)=>{
 		 		let t = item.substring(1,item.indexOf(']'))
 		 		let tt = parseInt(t.substring(0,t.indexOf(':'))) * 60 + parseFloat(t.substring(t.indexOf(':')+1))
 		 		krcArray.push({
@@ -56,10 +57,16 @@ export function currentMusicAPI(id){
 		 		url:data.url,
 		 		singerName:data.singerName,
 		 		songName:data.songName,
-		 		imgUrl:data.imgUrl
+		 		imgUrl:data.imgUrl,
+		 		duration:data.timeLength
 		 	}
-
-		 	dispatch(currentMusic(music));
+		 	await dispatch(musicBoxAddAPI({
+		 		hash:data.hash,
+      			name:data.songName
+		 	}))
+		 	await dispatch(currentMusic(music));
+		 	await dispatch(controllAPI('play'))
+		 	dispatch(spinHidden());
 		 }catch(error){
 			console.log('error',error);
 		}

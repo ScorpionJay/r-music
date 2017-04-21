@@ -11,20 +11,25 @@ class App extends Component {
   constructor(props) {
     super(props);
      const { dispatch,music } = this.props
-     const {currentTime ,duration} = this.props.time
-    this.state = {
-      slider: duration === 0 ? 0 : currentTime / duration *100,
+     const {currentTime } = this.props.time
+     const duration = music.currentMusic.duration
+     this.state = {
+      slider: duration ? currentTime / duration *100 : 0  ,
       playList:false
     };
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(111)
-  //   return true;
-  // }
+  async componentDidMount(){
+    const { dispatch,music } = this.props
+    const id = this.props.params.id
+    if( id && music.currentMusic.hash !== id){
+        await dispatch(currentMusicAPI(id))
+    }
+  }
 
   componentWillReceiveProps(){
-    const {currentTime ,duration} = this.props.time
+    const {currentTime } = this.props.time
+    const duration = this.props.music.currentMusic.duration
     this.setState({
       slider: duration === 0 ? 0 : currentTime / duration *100
     })
@@ -41,7 +46,7 @@ class App extends Component {
 
 
  formatSeconds(value) { 
-    var theTime = parseInt(value);// 秒 
+    var theTime = parseInt(value | 0);// 秒 
     var theTime1 = 0;// 分 
     var theTime2 = 0;// 小时 
     // alert(theTime); 
@@ -61,7 +66,7 @@ class App extends Component {
       m = m >= 10  ? ""+m : "0"+m; 
       result = ""+m+":"+result; 
     }else{
-       result = '00:'+result 
+       result = '00:'+ result
     } 
 
     if(theTime2 > 0) { 
@@ -72,33 +77,33 @@ class App extends Component {
   } 
 
   changeSlider(value){
+    const {currentTime } = this.props.time
+    const duration = this.props.music.currentMusic.duration
+    if( !duration  ) return
     this.setState({
       slider:value
     })
-    const {currentTime ,duration} = this.props.time
+    
+
     this.props.dispatch(changetimeAPI({
       currentTime: value/100 * duration ,
-      duration,
       changeTimeFlag: true
     }))
     
   }
 
-  async playMusic(id){
+   playMusic(id){
     const { dispatch,music } = this.props
     if( music.currentMusic.hash !== id ){
-      await dispatch(currentMusicAPI(id))
-      await dispatch(changetimeAPI({
-        currentTime: 0,
-        duration: 0
-      }))
-      await dispatch(controllAPI('play'))
+       dispatch(currentMusicAPI(id))
+       
     }
   }
 
   render() {
     const { dispatch,data,login,krc,time,music,controll } = this.props
-    const {currentTime ,duration} = this.props.time
+    const {currentTime } = this.props.time
+    const duration = this.props.music.currentMusic.duration
     let imgU = music.currentMusic.imgUrl.replace('{size}',400)
 
     let krc2 =  music.currentMusic.krc.filter((item)=>

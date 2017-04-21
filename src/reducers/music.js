@@ -65,7 +65,7 @@ function musicBox(state = vo, action) {
   }
 }
 
-function time(state = {currentTime:0,duration:0,changeTimeFlag: false}, action){
+function time(state = {currentTime:0,changeTimeFlag: false}, action){
   switch (action.type) {
     case CHANGETIME:
       return action.obj

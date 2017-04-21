@@ -4,9 +4,6 @@
 
 import storage  from './storage';
 import App from './app';
-import Home from './containers/home'
-import Album from './containers/album'
-import Play from './containers/play'
 
 const Routes = {
 	path: '/',
@@ -14,7 +11,18 @@ const Routes = {
 	indexRoute :{onEnter: (nextState, replace) => replace('/home')},
 	childRoutes: [
 		{ path: 'home',
-		  component:Home
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/home').default)
+			})
+		   }
+		},
+		{ path: 'music',
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/music').default)
+			})
+		   }
 		},
 		{ path: 'friend',
 		  getComponent (nextState, cb) {
@@ -31,13 +39,25 @@ const Routes = {
 		   }
 		},
 		{ path: 'album/:id', 
-		  component:Album
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/album').default)
+			})
+		   }
 		},
 		{ path: 'play', 
-		 	component:Play
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/play').default)
+			})
+		   }
 		},
 		{ path: 'play/:id', 
-		  component:Play
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/play').default)
+			})
+		   }
 		},
 		{ path: 'login/:page', 
 		  getComponent (nextState, cb) {

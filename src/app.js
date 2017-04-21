@@ -11,7 +11,6 @@ class App extends Component{
 		const { dispatch } = this.props
 		dispatch(changetimeAPI({
 			currentTime: t.currentTime,
-			duration: t.duration,
 			changeTimeFlag: false
 		}))
 	}
@@ -19,7 +18,6 @@ class App extends Component{
 	changeTime(){
 		dispatch(changetimeAPI({
 			currentTime: t.currentTime,
-			duration: t.duration,
 			changeTimeFlag: false
 		}))
 	}
@@ -31,7 +29,6 @@ class App extends Component{
     	await dispatch(currentMusicAPI(music.currentMusic.hash))
 	    await dispatch(changetimeAPI({
 	      currentTime: 0,
-	      duration: 0
 	    }))
     	await dispatch(controllAPI('play'))
 	}

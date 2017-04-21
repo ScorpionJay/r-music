@@ -19,18 +19,8 @@ class App extends Component {
     dispatch(albumListAPI(this.props.params.id))
   }
 
-  async musicBoxAdd(m){
-    const { dispatch,music } = this.props
-    if( music.currentMusic.hash !== m.hash ){
-      await dispatch(musicBoxAddAPI(m))
-      await dispatch(currentMusicAPI(m.hash))
-      await dispatch(changetimeAPI({
-        currentTime: 0,
-        duration: 0
-      }))
-      await dispatch(controllAPI('play'))
-    }
-    await browserHistory.push('play')
+  musicBoxAdd(m){
+    browserHistory.push(`play/${m.hash}`)
   }
 
   render() {

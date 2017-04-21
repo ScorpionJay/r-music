@@ -5,40 +5,30 @@ export default class Audio extends Component {
   componentDidUpdate(){
     const { dispatch ,time} = this.props
     
-    // 播放状态 play pause 
-    this.timer && clearTimeout(this.timer)
     if( this.props.time.changeTimeFlag ){
       this.refs.music.currentTime = this.props.time.currentTime
     }
-
+    // alert(this.props.controll)
     switch(this.props.controll) {
       case 'play':
             if(this.props.data.currentMusic.url === '')return
             this.refs.music.play()
-            this.timer = setInterval(
-              () => {
-                if( this.refs.music.currentTime === this.refs.music.duration ){
-                  this.timer && clearTimeout(this.timer)
-                }else{
-                  this.props.getCur( this.refs.music  )
-                }
-              },
-              100
-            )
         break;
       case 'pause':
             this.refs.music.pause()
-            this.timer && clearTimeout(this.timer)
         break;
     }
+  }
 
+  update(){
+    this.props.getCur( this.refs.music  )
   }
 
   render() {
       return (
         <div>
           {this.props.data.url}
-          <audio src={this.props.data.currentMusic.url}  ref='music' onEnded={()=>this.props.nextMusic()}/>
+          <audio src={this.props.data.currentMusic.url}  ref='music' onEnded={()=>this.props.nextMusic()} onTimeUpdate={()=>this.update()}  onCanplay={()=>alert('over')} />
         </div>
       )
   }
