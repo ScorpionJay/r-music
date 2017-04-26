@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch,data,login,controll,music } = this.props
+    const { dispatch,data,login,controll,currentMusic } = this.props
     return (
       <div className='root'>
 
@@ -37,7 +37,7 @@ class App extends Component {
         </div>
         
         <div className="container">
-          <Album data={data} addMusic={(m) => this.musicBoxAdd(m)} currentHash={music.currentMusic.hash}/>
+          <Album data={data} addMusic={(m) => this.musicBoxAdd(m)} currentHash={currentMusic.hash}/>
         </div>
 
         <Nav/>
@@ -50,9 +50,9 @@ class App extends Component {
 function map(state) {
   return {
     data: state.album.albumList,
-    music: state.music.musicBox,
-    controll:state.music.controll,
-    login: state.login.login
+    message: state.message.message,
+    musicPlayList: state.music.musicPlayList,
+    currentMusic: state.music.currentMusic,
   }
 }
 

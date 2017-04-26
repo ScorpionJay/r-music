@@ -35,7 +35,7 @@ export function currentMusicAPI(id){
 	 		let data = await api( Config.musicAPI.replace('HASH',id) );
 	 		let krc = await api( Config.krcAPI.replace('HASH',id).replace('TIMELENGTH',data.timeLength+'000'), 'get', {}, {'Accept':'text/html'});
 		 	let krcArray = []
-		 	await krc.split('\n').map((item,index)=>{
+		 	krc.split('\n').map((item,index)=>{
 		 		let t = item.substring(1,item.indexOf(']'))
 		 		let tt = parseInt(t.substring(0,t.indexOf(':'))) * 60 + parseFloat(t.substring(t.indexOf(':')+1))
 		 		krcArray.push({
@@ -55,12 +55,12 @@ export function currentMusicAPI(id){
 		 		imgUrl:data.imgUrl,
 		 		duration:data.timeLength
 		 	}
-		 	await dispatch(musicBoxAddAPI({
+		 	dispatch(musicBoxAddAPI({
 		 		hash:data.hash,
       			name:data.songName
 		 	}))
-		 	await dispatch(currentMusic(music));
-			await dispatch(controllAPI('play'))
+		 	dispatch(currentMusic(music));
+			dispatch(controllAPI('play'))
 		 	// dispatch(spinHidden());
 		 }catch(error){
 			console.log('error',error);
@@ -87,35 +87,35 @@ export function controllAPI(obj){
 	}
 }
 
-export function changeMusicAPI(state,type){
+export function changeMusicAPI(state,currentMusic,type){
 	return dispatch => { 
       let index = 0
-      if(state.musicBox.length === 1){
+      if(state.length === 1){
         index = 0
       }else{
-        for(let i=0; i<state.musicBox.length; i++){
-          if(state.musicBox[i].hash === state.currentMusic.hash){
+        for(let i=0; i<state.length; i++){
+          if(state[i].hash === currentMusic.hash){
             index = i;
             break
           }
         }
 
         if(type !== 'pre'){
-        	if( index === state.musicBox.length-1){
+        	if( index === state.length-1){
 	          index = 0
 	        }else{
 	          index = index+1
 	        }
         }else{
 			if( index === 0  ){
-	          index = state.musicBox.length-1
+	          index = state.length-1
 	        }else{
 	          index = index-1
 	        }
         }
 
       }
-	  dispatch(currentMusicAPI(state.musicBox[index].hash))
+	  dispatch(currentMusicAPI(state[index].hash))
 	}
 }
 

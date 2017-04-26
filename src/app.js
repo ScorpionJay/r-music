@@ -23,23 +23,29 @@ class App extends Component{
 	}
 
 	changeMusic(){
-		const { dispatch,music } = this.props
-		dispatch(changeMusicAPI(music))
+		const { dispatch,musicPlayList,currentMusic } = this.props
+		dispatch(changeMusicAPI(musicPlayList,currentMusic))
 	}
 
+	controllMusic(){
+		const { dispatch } = this.props
+		dispatch(controllAPI('pause'))
+	}
+	 
 	render(){
-		const {music,time,controll,spin,message} = this.props;
+		const {currentMusic,time,controll,spin,message} = this.props;
 		return (
 			<div className='root'>
 				<Spin spin={spin}/>
 				<Message data={message}/>
 				<div className='root'>{this.props.children}</div>
 
-				<Audio data={music} 
+				<Audio data={currentMusic} 
 					getCur={(e)=>this.getCur(e)}
 					time={time}
 					changeTime={()=>this.changeTime()} 
 					changeMusic={()=>this.changeMusic()}
+					controllMusic = {() => this.controllMusic()}
 					controll={controll} />
 			
 			</div>
@@ -49,11 +55,12 @@ class App extends Component{
 
 function map(state) {
   return {
-  	music: state.music.musicBox,
   	time:state.music.time,
-  	controll:state.music.controll,
     spin: state.spin.spin,
-    message:state.message.message
+    message: state.message.message,
+    musicPlayList: state.music.musicPlayList,
+    currentMusic: state.music.currentMusic,
+    controll:state.music.controll
   };
 }
 

@@ -1,48 +1,45 @@
 import { combineReducers } from 'redux'
 import { MUSICBOX,MUSICBOXADD,CURRENTMUSIC,KRC,PLAY,PAUSE,CHANGETIME,PRE,NEXT } from '../actions/music'
 
-let musicPlayListVo = [
+let vo = {
+  musicBox:[
     {
       hash:'',
       name:''
     }
-]
+  ],
+  currentMusic:{
+    hash:'',
+    name:'',
+    krc:[{time:0,str:''}],
+    singerName:'',
+    songName:'',
+    url:'',
+    imgUrl:''
+  }
+}
 
-function musicPlayList(state = musicPlayListVo, action) {
+
+function musicBox(state = vo, action) {
   switch (action.type) {
     case MUSICBOX:// 初始化音乐盒
+      state.musicBox = action.obj
       return state 
     case MUSICBOXADD:// 音乐盒添加音乐
       let flag = true
-      for(let i=0; i<state.length; i++){
-          if(state[i].hash === action.obj.hash){
+      for(let i=0; i<state.musicBox.length; i++){
+          if(state.musicBox[i].hash === action.obj.hash){
             flag = false
             break
           }
         }
       if( flag ){
-        state = state[0].hash === '' ? [].concat(action.obj) : state.concat( action.obj )
+        state.musicBox = state.musicBox[0].hash === '' ? [].concat(action.obj) : state.musicBox.concat( action.obj )
       }  
       return state 
-    default:
+    case CURRENTMUSIC:// 音乐盒当前音乐
+      state.currentMusic = action.obj
       return state
-  }
-}
-
-let currentMusicVo = {
-  hash:'',
-  name:'',
-  krc:[{time:0,str:''}],
-  singerName:'',
-  songName:'',
-  url:'',
-  imgUrl:'',
-  duration:0
-}
-function currentMusic(state = currentMusicVo, action){
-  switch (action.type) {
-    case CURRENTMUSIC:
-      return action.obj
     default:
       return state
   }
@@ -70,7 +67,7 @@ function controll(state = 'pause', action){
 
 
 const Reducers = combineReducers({
-  musicPlayList,currentMusic,time,controll
+  musicBox,time,controll
 })
 
 export default Reducers

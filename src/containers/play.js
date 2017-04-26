@@ -10,9 +10,9 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-     const { dispatch,music } = this.props
+     const { dispatch,currentMusic } = this.props
      const {currentTime } = this.props.time
-     const duration = music.currentMusic.duration
+     const duration = currentMusic.duration
      this.state = {
       slider: duration ? currentTime / duration *100 : 0  ,
       playList:false
@@ -20,30 +20,29 @@ class App extends Component {
   }
 
   async componentDidMount(){
-    const { dispatch,music } = this.props
+    const { dispatch,currentMusic } = this.props
     const id = this.props.params.id
-    if( id && music.currentMusic.hash !== id){
+    if( id && currentMusic.hash !== id){
         await dispatch(currentMusicAPI(id))
     }
   }
 
   componentWillReceiveProps(){
     const {currentTime } = this.props.time
-    const duration = this.props.music.currentMusic.duration
+    const duration = this.props.currentMusic.duration
     this.setState({
       slider: duration === 0 ? 0 : currentTime / duration *100
     })
   }
 
   musicControll(){
-    const { dispatch,controll,music } = this.props
+    const { dispatch,controll,currentMusic } = this.props
     // no music
-    if( music.currentMusic.hash === '' ) return 
+    if( currentMusic.hash === '' ) return 
     let status = controll === 'play' ? 'pause' : 'play'
     dispatch(controllAPI(status))
     
   }
-
 
  formatSeconds(value) { 
     var theTime = parseInt(value | 0);// 秒 
@@ -78,7 +77,7 @@ class App extends Component {
 
   changeSlider(value){
     const {currentTime } = this.props.time
-    const duration = this.props.music.currentMusic.duration
+    const duration = this.props.currentMusic.duration
     if( !duration  ) return
     this.setState({
       slider:value
@@ -93,20 +92,20 @@ class App extends Component {
   }
 
    playMusic(id){
-    const { dispatch,music } = this.props
-    if( music.currentMusic.hash !== id ){
+    const { dispatch,currentMusic } = this.props
+    if( currentMusic.hash !== id ){
        dispatch(currentMusicAPI(id))
        
     }
   }
 
   render() {
-    const { dispatch,data,login,krc,time,music,controll } = this.props
+    const { dispatch,data,login,krc,time,controll,currentMusic,musicPlayList } = this.props
     const {currentTime } = this.props.time
-    const duration = this.props.music.currentMusic.duration
-    let imgU = music.currentMusic.imgUrl.replace('{size}',400)
+    const duration = this.props.currentMusic.duration
+    let imgU = currentMusic.imgUrl.replace('{size}',400)
 
-    let krc2 =  music.currentMusic.krc.filter((item)=>
+    let krc2 =  currentMusic.krc.filter((item)=>
       currentTime > item.time
     )
     let s = krc2.pop()
@@ -115,7 +114,7 @@ class App extends Component {
           index:0}
 
     return (
-      <div className='root'  >
+      <div className='root' >
         
           <div  style={{zIndex:1,position:'absolute',left:0,top:0,right:0,bottom:0}}>
             <div  style={{display: 'flex',maxWidth: '640px',widtt:'100%',height:'100%', margin: '0 auto',backgroundImage:`url(${imgU})`,backgroundSize: 'cover',filter: 'blur(3rem)',backgroundPosition: '50%'}}>
@@ -127,14 +126,14 @@ class App extends Component {
 
             <div className="header" style={{backgroundColor:'transparent',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem',borderBottom:'.01rem solid #999'}}>
               <div onClick={()=>browserHistory.goBack()} style={{display:'flex',flex:1}}>返回</div>
-              <div style={{display:'flex',flex:3,justifyContent: 'center'}}>{ music.currentMusic.songName }</div>
+              <div style={{display:'flex',flex:3,justifyContent: 'center'}}>{ currentMusic.songName }</div>
               <div style={{display:'flex',flex:1}}></div>
             </div>
 
             
               <div className="container" style={{overflowY: 'auto',textAlign:'center',color:'#aaa',padding:'3rem 0',fontSize:'1.2rem'}} onClick={()=>this.setState({playList : false})} >
                 {
-                  music.currentMusic.krc.map((item)=> 
+                  currentMusic.krc.map((item)=> 
                     <div style={ Object.assign( {transform: 'translateY('+  (15-s.index*3.3)  +'rem)',transition: 'transform .5s ease',padding:'1rem 0'}, s.time === item.time ? {color:'#fff'} : {} )} >
                       {item.str}
                     </div>
@@ -154,9 +153,9 @@ class App extends Component {
               
               <div style={{display:'flex',padding:'1rem',justifyContent: 'space-between',}}>
                 <div onClick={()=>console.log('...')}> </div> 
-                <div onClick={()=>this.props.dispatch(changeMusicAPI(music,'pre'))}><PreBtn/></div>  
+                <div onClick={()=>this.props.dispatch(changeMusicAPI(musicPlayList,currentMusic,'pre'))}><PreBtn/></div>  
                 <div onClick={()=>this.musicControll()}>{ controll === 'play' ?   <StopBtn /> : <PlayBtn /> }</div>
-                <div onClick={()=>this.props.dispatch(changeMusicAPI(music))}><NextBtn/></div>  
+                <div onClick={()=>this.props.dispatch(changeMusicAPI(musicPlayList,currentMusic))}><NextBtn/></div>  
                 <div onClick={()=>this.setState({playList : true})}><ListBtn/></div> 
               </div> 
             </div>
@@ -165,11 +164,11 @@ class App extends Component {
              <div className="container" style={ Object.assign( { position:'fixed',bottom:'0',left:'0',right:'0',maxHeight:'30rem',maxWidth: '640px',margin: '0 auto', } , this.state.playList ? {display:'block'} : {display:'none'})  }>
                 <div style={{minHeight:'25rem',maxWidth: '640px',widtt:'100%',height:'100%',backgroundColor:'#fff', margin: '0 auto'}}>
                     <div style={{textAlign:'center',fontSize:'1.5rem',padding:'1rem',borderBottom:'.01rem solid #ddd'}}>
-                      播放列表  { music.currentMusic.hash ===''? '(0)' : `(${music.musicBox.length})`}
+                      播放列表  { currentMusic.hash ===''? '(0)' : `(${musicPlayList.length})`}
                     </div>
                     {
-                     music.musicBox.map((item)=>
-                        <div style={ music.currentMusic.hash === item.hash ? {color:'#ce3d3e'} :{} } >
+                     musicPlayList.map((item)=>
+                        <div style={ currentMusic.hash === item.hash ? {color:'#ce3d3e'} :{} } >
                           <Item {...item} play={(id)=>this.playMusic(id)}/>
                         </div> 
                       )
@@ -201,7 +200,8 @@ class Item extends Component {
 
 function map(state) {
   return {
-    music: state.music.musicBox,
+    musicPlayList: state.music.musicPlayList,
+    currentMusic: state.music.currentMusic,
     controll:state.music.controll,
     time:state.music.time
   }
