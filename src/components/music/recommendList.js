@@ -3,6 +3,7 @@
 */
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 
 /**
 * 推荐歌单列表
@@ -10,14 +11,14 @@ import { Link } from 'react-router'
 export default class MusicList extends Component { 
   render() {
       return (
-        <div >
+        <div>
           <div className='recommod'>
             <span style={{lineHeight: '1.6rem'}}>推荐歌单</span>
             <span className='arrow-right'></span>
           </div>
           <div style={Styles.container}>
             {
-              this.props.data.map((obj)=> <MusicItem data={obj}/> )
+              this.props.data.map((obj)=> <MusicItem data={obj} scrollTop={this.props.scrollTop} /> )
             }
           </div>
         </div>
@@ -29,17 +30,23 @@ export default class MusicList extends Component {
 * 推荐歌单详情
 */
 class MusicItem extends Component { 
+
+  goAlbum(){
+    this.props.scrollTop()
+    browserHistory.push(`album/${this.props.data.specialid}`)
+  }
+
   render() {
       const {specialname,imgurl,intro,playcount,specialid} = this.props.data;
       const imgurl2 = imgurl.replace('{size}',400);
       return (
-        <Link style={Styles.containerItem} to={`/album/${specialid}`}>
+        <div style={Styles.containerItem} onClick={()=>this.goAlbum()}>
           <div style={Styles.img}>
             <div style={Styles.count}>{ parseInt(playcount/10000) + '万'}</div>
             <img src={imgurl2} style={Styles.img} />
           </div>
           <div style={Styles.name}>{specialname}</div>
-        </Link>
+        </div>
       )
   }
 }

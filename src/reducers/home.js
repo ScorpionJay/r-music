@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
-import { HOME } from '../actions/home'
-
+import { HOME,SCROLLTOP } from '../actions/home'
 let homeVo = {
   slider:[
     {
@@ -37,8 +36,17 @@ function home(state = homeVo, action) {
   }
 }
 
+function scrollTop(state = 0, action) {
+  switch (action.type) {
+    case SCROLLTOP:
+      return action.obj
+    default:
+      return state
+  }
+}
+
 const Reducers = combineReducers({
-  home
+  home,scrollTop
 })
 
 export default Reducers

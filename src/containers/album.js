@@ -15,8 +15,10 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const { dispatch } = this.props
-    dispatch(albumListAPI(this.props.params.id))
+    const { dispatch,albumList } = this.props
+    if( albumList.info.specialid != this.props.params.id){
+      dispatch(albumListAPI(this.props.params.id))
+    }
   }
 
   musicBoxAdd(m){
@@ -24,7 +26,7 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch,data,login,controll,currentMusic } = this.props
+    const { dispatch,albumList,login,controll,currentMusic } = this.props
     return (
       <div className='root'>
 
@@ -37,7 +39,7 @@ class App extends Component {
         </div>
         
         <div className="container">
-          <Album data={data} addMusic={(m) => this.musicBoxAdd(m)} currentHash={currentMusic.hash}/>
+          <Album data={albumList} addMusic={(m) => this.musicBoxAdd(m)} currentHash={currentMusic.hash}/>
         </div>
 
         <Nav/>
@@ -49,7 +51,7 @@ class App extends Component {
 
 function map(state) {
   return {
-    data: state.album.albumList,
+    albumList: state.album.albumList,
     message: state.message.message,
     musicPlayList: state.music.musicPlayList,
     currentMusic: state.music.currentMusic,

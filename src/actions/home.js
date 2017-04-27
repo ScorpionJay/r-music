@@ -4,6 +4,7 @@ import api from '../api'
 
 export const HOME = 'HOME'
 export const RECOMMENDMUSIC = 'RECOMMENDMUSIC'
+export const SCROLLTOP = 'SCROLLTOP'
 
 export const home = (obj) =>{
 	return {
@@ -19,24 +20,35 @@ export const recommendMusic = (obj) =>{
 	}
 }
 
-export function homeAPI(){
+
+export const scrollTop = (obj) =>{
+	return {
+		type: SCROLLTOP,
+		obj
+	}
+}
+
+export function homeAPI(d,page){
 
 	return async dispatch => {
 	 	dispatch(spin());
 	 	try{
 	 		let data = await api( Config.homeAPI );
-	 		let musicList = await api( Config.musicListAPI,'get',{page:1,json:true} );
-	 		data.recommendMusics = musicList.plist.list.info
+	 		let musicList = await api( Config.musicListAPI,'get',{page:page,json:true} );
+	 		data.recommendMusics = page ===1 ? musicList.plist.list.info : d.recommendMusics.concat( musicList.plist.list.info )
 		 	dispatch(home(data))
 		 	dispatch(spinHidden());
 		 }catch(error){
 			console.log('error',error);
 		}
 	}
-
-	
-
-	
 }
+
+export function scrollTopAction(obj){
+	return  dispatch => {
+	 	dispatch(scrollTop(obj));
+	}
+}
+
 
 

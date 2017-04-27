@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { homeAPI } from '../actions/home'
+import { homeAPI,scrollTopAction } from '../actions/home'
 import Slider from '../components/common/slider'
 import Nav from '../components/common/Nav'
 import RecommendList from '../components/music/recommendList'
@@ -15,6 +15,7 @@ class App extends Component {
   
     this.state = {
       index: 0,
+      page:1
     };
 
     this.handleChangeTabs = (value) => () => {
@@ -32,8 +33,33 @@ class App extends Component {
   }
 
   componentDidMount(){
+    const { dispatch,data,scrollTop } = this.props
+    if( data.recommendMusics.length > 1){
+      // 计算有问题
+      this.refs.container.scrollTop = scrollTop>0 ? scrollTop + this.refs.container.clientHeight / 2 - 50 : 0
+    }else{
+      dispatch(homeAPI(data,this.state.page))
+    }
+  }
+
+  // 记录当前div滚动高度，以便返回时复原
+  scrollTopHandler(){
     const { dispatch } = this.props
-    dispatch(homeAPI())
+    dispatch(scrollTopAction(this.refs.container.scrollTop))
+  }
+
+  scroll(){
+    const { dispatch,data } = this.props
+    // console.log('offsetHeight',this.refs.container.offsetHeight)
+    // console.log('scrollHeight',this.refs.container.scrollHeight)
+    // console.log('clientHeight',this.refs.container.clientHeight)
+    // console.log('scrollTop',this.refs.container.scrollTop)    
+    
+    if( this.refs.container.scrollTop + this.refs.container.clientHeight ===  this.refs.container.scrollHeight){
+      // 这里有问题
+      dispatch(homeAPI(data,this.state.page+1))
+      this.setState({page:this.state.page+1})
+    }
   }
 
   render() {
@@ -64,12 +90,12 @@ class App extends Component {
         </div>
         
 
-        <div className="container">
+        <div className="container" onScroll={()=>this.scroll() } ref='container'>
           
           <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
             <div>
                 <Slider data={data.slider} />
-                <RecommendList data={data.recommendMusics}/>
+                <RecommendList data={data.recommendMusics} scrollTop={()=>this.scrollTopHandler()}/>
             </div>
             <div>
               TODO
@@ -94,6 +120,7 @@ class App extends Component {
 function map(state) {
   return {
     data: state.home.home,
+    scrollTop: state.home.scrollTop,
     login: state.login.login,
     controll:state.music.controll
   }
