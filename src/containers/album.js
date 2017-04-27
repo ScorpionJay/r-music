@@ -55,6 +55,7 @@ function map(state) {
     message: state.message.message,
     musicPlayList: state.music.musicPlayList,
     currentMusic: state.music.currentMusic,
+    controll:state.music.controll
   }
 }
 
