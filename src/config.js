@@ -6,6 +6,7 @@ if (process.env.NODE_ENV === 'production') {
   Config = {
     loginUrl:'/api/uaa/oauth/token',
     test:'/api/resource/test',
+    bannerAPI:'/ad/v1/mobile_fmbanner?&appid=1&clientver=1&clienttime=1&key=1',
     homeAPI:'./json/home.json',
     musicListAPI:'/kugou/plist/index',
     playListAPI:'/kugou/plist/list/id/?json=ture',
@@ -16,6 +17,7 @@ if (process.env.NODE_ENV === 'production') {
   Config = {
     loginUrl:'/api/uaa/oauth/token',
     test:'/api/resource/test',
+    bannerAPI:'/ad/v1/mobile_fmbanner?&appid=1&clientver=1&clienttime=1&key=1',
   	homeAPI:'./json/home.json',
     musicListAPI:'/kugou/plist/index',
     playListAPI:'/kugou/plist/list/id/?json=ture',

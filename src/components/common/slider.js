@@ -30,8 +30,8 @@ export default class SimpleSlider extends Component {
 class SliderItem extends Component { 
   render() {
     return (
-      <a href={this.props.link} target='_blank' rel="noopener">
-        <img src={this.props.img} />
+      <a href={this.props.extra.innerurl} target='_blank' rel="noopener">
+        <img src={this.props.imgurl} />
       </a>
     )
   }

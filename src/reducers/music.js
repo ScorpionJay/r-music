@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { MUSICBOX,MUSICBOXADD,CURRENTMUSIC,KRC,PLAY,PAUSE,CHANGETIME,PRE,NEXT } from '../actions/music'
+import { MUSICBOX,MUSICBOXADD,CURRENTMUSIC,KRC,PLAY,PAUSE,CHANGETIME,PRE,NEXT,FIRSTTIME } from '../actions/music'
 
 let musicPlayListVo = [
     {
@@ -69,8 +69,17 @@ function controll(state = 'pause', action){
 }
 
 
+function firstTime(state = true, action){
+  switch (action.type) {
+    case FIRSTTIME:
+      return action.obj
+    default:
+      return state
+  }
+}
+
 const Reducers = combineReducers({
-  musicPlayList,currentMusic,time,controll
+  musicPlayList,currentMusic,time,controll,firstTime
 })
 
 export default Reducers

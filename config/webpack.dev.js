@@ -99,6 +99,11 @@ module.exports = function (options){
                     target: "http://m.kugou.com",
                     changeOrigin: true,
                     pathRewrite: {"^/kugou" : ""}
+                },
+                "/ad": {
+                    target: "http://ads.service.kugou.com",
+                    changeOrigin: true,
+                    pathRewrite: {"^/ad" : ""}
                 }
             }
         }

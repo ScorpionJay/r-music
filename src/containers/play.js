@@ -20,10 +20,10 @@ class App extends Component {
   }
 
   async componentDidMount(){
-    const { dispatch,currentMusic } = this.props
+    const { dispatch,currentMusic,firstTime } = this.props
     const id = this.props.params.id
     if( id && currentMusic.hash !== id){
-        await dispatch(currentMusicAPI(id))
+        await dispatch(currentMusicAPI(id,firstTime))
     }
   }
 
@@ -117,7 +117,7 @@ class App extends Component {
       <div className='root' >
         
           <div  style={{zIndex:1,position:'absolute',left:0,top:0,right:0,bottom:0}}>
-            <div  style={{display: 'flex',maxWidth: '640px',widtt:'100%',height:'100%', margin: '0 auto',backgroundImage:`url(${imgU})`,backgroundSize: 'cover',filter: 'blur(3rem)',backgroundPosition: '50%'}}>
+            <div  style={{display: 'flex',maxWidth: '640px',widtt:'100%',height:'100%', margin: '0 auto',backgroundImage:`url(${imgU})`,backgroundSize: 'cover',filter: 'blur(3rem)','-webkit-filter': 'blur(3rem)',backgroundPosition: '50%'}}>
             </div>
             <div style={{zIndex:3,position:'absolute',left:0,top:0,right:0,bottom:0,opacity: '0.7',backgroundColor:'#555'}}></div>
           </div>
@@ -203,7 +203,8 @@ function map(state) {
     musicPlayList: state.music.musicPlayList,
     currentMusic: state.music.currentMusic,
     controll:state.music.controll,
-    time:state.music.time
+    time:state.music.time,
+    firstTime:state.music.firstTime
   }
 }
 

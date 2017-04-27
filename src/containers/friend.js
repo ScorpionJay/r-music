@@ -7,7 +7,6 @@ class App extends Component {
 
   componentDidMount(){
     const { dispatch } = this.props
-    dispatch(homeAPI())
   }
   render() {
     const { dispatch,data,login } = this.props

@@ -1,10 +1,22 @@
 import { combineReducers } from 'redux'
 import { HOME,SCROLLTOP } from '../actions/home'
 let homeVo = {
-  slider:[
+  banner:[
     {
-      link:'',
-      img:''
+      imgurl: "",
+      title: "",
+      id: 5845,
+      type: 2,
+      extra: {
+        albumname: "",
+        imgurl: "",
+        privilege: 0,
+        albumid: 2104644,
+        singerid: 3060,
+        singername: "",
+        intro: "",
+        publishtime: ""
+      },
     }
   ],
   recommendMusics: [

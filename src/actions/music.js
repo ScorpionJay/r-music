@@ -8,6 +8,7 @@ export const CURRENTMUSIC = 'CURRENTMUSIC'
 export const PLAY = 'PLAY'
 export const PAUSE = 'PAUSE'
 export const CHANGETIME = 'CHANGETIME'
+export const FIRSTTIME = 'FIRSTTIME'
 
 const musicBox = (obj) => {return { type: MUSICBOX, obj }}
 const musicBoxAdd = (obj) => {return { type: MUSICBOXADD, obj } }
@@ -15,6 +16,7 @@ const currentMusic = (obj) => {return { type:CURRENTMUSIC, obj }}
 const play = (obj) => {return { type:PLAY, obj }}
 const pause = (obj) => {return { type:PAUSE, obj }}
 const changetime = (obj) => {return { type:CHANGETIME, obj }}
+const firstTime = (obj) => {return { type:FIRSTTIME, obj }}
 
 export function musicBoxInit(obj){
 	return dispatch => { 
@@ -28,7 +30,14 @@ export function musicBoxAddAPI(obj){
 	}
 }
 
-export function currentMusicAPI(id){
+export function firstTimeAction(obj){
+	return dispatch => { 
+		dispatch(firstTime(obj))
+	}
+}
+
+
+export function currentMusicAPI(id,firstTime){
 	return async dispatch => {
 		// dispatch(spin());
 	 	try{
@@ -60,7 +69,11 @@ export function currentMusicAPI(id){
       			name:data.songName
 		 	}))
 		 	dispatch(currentMusic(music));
-			dispatch(controllAPI('play'))
+			if(!firstTime){
+				dispatch(controllAPI('play'))
+			}else{
+				firstTimeAction(false)
+			}
 		 	// dispatch(spinHidden());
 		 }catch(error){
 			console.log('error',error);

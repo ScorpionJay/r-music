@@ -12,15 +12,22 @@ export default class MusicList extends Component {
   render() {
       return (
         <div>
-          <div className='recommod'>
-            <span style={{lineHeight: '1.6rem'}}>推荐歌单</span>
-            <span className='arrow-right'></span>
-          </div>
-          <div style={Styles.container}>
-            {
-              this.props.data.map((obj)=> <MusicItem data={obj} scrollTop={this.props.scrollTop} /> )
-            }
-          </div>
+          {
+            this.props.data.length === 1 ?
+              <div></div>
+            : 
+              <div>
+                <div className='recommod'>
+                  <span style={{lineHeight: '1.6rem'}}>推荐歌单</span>
+                  <span className='arrow-right'></span>
+                </div>
+                <div style={Styles.container}>
+                  {
+                    this.props.data.map((obj)=> <MusicItem data={obj} scrollTop={this.props.scrollTop} /> )
+                  }
+                </div>
+              </div>
+          }
         </div>
       )
   }
