@@ -48,11 +48,12 @@ class MusicItem extends Component {
       const imgurl2 = imgurl.replace('{size}',400);
       return (
         <div style={Styles.containerItem} onClick={()=>this.goAlbum()}>
-          <div style={Styles.img}>
+          <div style={Styles.item}>
             <div style={Styles.count}>{ parseInt(playcount/10000) + '万'}</div>
             <img src={imgurl2} style={Styles.img} />
+            <div style={Styles.name}>{specialname}</div>
           </div>
-          <div style={Styles.name}>{specialname}</div>
+          
         </div>
       )
   }
@@ -80,15 +81,20 @@ const Styles = {
     fontSize:'1rem',
     width:'9rem'
   },
+  item:{
+    position: 'relative'
+  },
   img:{
-    width:'9rem'
+    width:'9rem',
   },
   count:{
     position:'absolute',
-    width:'8.5rem',
-    marginTop:'.5rem',
+    width:'100%',
     textAlign: 'right',
     color:'#fff',
-    fontSize:'.8rem'
+    top:0,
+    left:0,
+    fontSize:'.8rem',
+    backgroundColor:'rgba(153, 153, 153, 0.4)'
   }
 }

@@ -91,22 +91,9 @@ class App extends Component {
         
 
         <div className="container" onScroll={()=>this.scroll() } ref='container'>
-          
-          <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
-            <div>
-                <Slider data={data.banner} />
+          <Slider data={data.banner} />
                 <RecommendList data={data.recommendMusics} scrollTop={()=>this.scrollTopHandler()}/>
-            </div>
-            <div>
-              TODO
-            </div>
-            <div>
-              TODO
-            </div>
-            <div>
-              TODO
-            </div>
-          </SwipeableViews>
+          
 
         </div>
 
