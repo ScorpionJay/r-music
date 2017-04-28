@@ -35,7 +35,7 @@ export function homeAPI(d,page){
 	 	try{
 	 		let data ={}
 	 		let banner = await api( Config.bannerAPI )
-	 		let musicList = await api( Config.musicListAPI,'get',{page:1,json:true} )
+	 		let musicList = await api( Config.musicListAPI,'get',{page:page,json:true} )
 	 		data.banner = banner.data.info
 	 		data.recommendMusics = page ===1 ? musicList.plist.list.info : d.recommendMusics.concat( musicList.plist.list.info )
 		 	dispatch(home(data))

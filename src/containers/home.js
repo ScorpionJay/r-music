@@ -4,9 +4,10 @@ import { homeAPI,scrollTopAction } from '../actions/home'
 import Slider from '../components/common/slider'
 import Nav from '../components/common/Nav'
 import RecommendList from '../components/music/recommendList'
-import SwipeableViews from 'react-swipeable-views'
 import { Link } from 'react-router'
 import Beat from '../components/music/beat'
+import Search from '../components/music/search'
+import { browserHistory } from 'react-router'
 
 class App extends Component {
 
@@ -62,6 +63,10 @@ class App extends Component {
     }
   }
 
+  gotoSearch(){
+     browserHistory.push('search')
+  }
+
   render() {
     const { dispatch,data,login,controll} = this.props
     const {
@@ -73,7 +78,9 @@ class App extends Component {
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
           
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}></div>
-          <div style={{display:'flex',flex:2,justifyContent: 'center'}}>首页</div>
+          <div style={{display:'flex',flex:10,justifyContent: 'center'}} onClick={()=>this.gotoSearch()}>
+            <Search />
+          </div>
           <Link style={{display:'flex',flex:1,justifyContent: 'flex-end'}}  to='/play'>
             <Beat  beat={controll === 'play'} />
           </Link>

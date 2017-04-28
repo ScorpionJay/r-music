@@ -104,6 +104,11 @@ module.exports = function (options){
                     target: "http://ads.service.kugou.com",
                     changeOrigin: true,
                     pathRewrite: {"^/ad" : ""}
+                },
+                "/musicSearch": {
+                    target: "http://mobilecdn.kugou.com",
+                    changeOrigin: true,
+                    pathRewrite: {"^/musicSearch" : ""}
                 }
             }
         }

@@ -23,6 +23,13 @@ const Routes = {
 			})
 		   }
 		},
+		{ path: 'search',
+		  getComponent (nextState, cb) {
+			require.ensure([], (require)=>{
+				 cb(null, require('./containers/search').default)
+			})
+		   }
+		},
 		{ path: 'friend',
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{
