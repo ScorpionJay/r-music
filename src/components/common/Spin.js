@@ -6,7 +6,12 @@ export default class Spin extends Component {
 		return (
 			<div>
 				{
-					this.props.spin ? <div style={ Styles.show  }>Loading...</div> : ''
+					this.props.spin ? 
+					<div style={Styles.container}>
+						<div style={ Styles.show  }>Loading...</div>
+					</div>
+					:
+					''
 				}
 			</div>
 		)
@@ -14,18 +19,23 @@ export default class Spin extends Component {
 } 
 
 const Styles = {
-	show:{
-	    position: 'fixed',
-	    display:'flex',
+	container:{
+		position: 'fixed',
 	    top: 0,
 	    left: 0,
 	    right: 0,
 	    bottom: 0,
+	    zIndex: 9999,
+	},
+	show:{
+	    display:'flex',
+	   	height:'100%',
+	   	margin: '0 auto',
+	   	maxWidth: '640px',
 	    justifyContent:'center',
 		alignItems:'center',
 	    color: 'rgb(51, 51, 51)',
 	    backgroundColor: '#b1abab',
-	    zIndex: 9999,
 	    opacity:'0.8'
 	}
 }
