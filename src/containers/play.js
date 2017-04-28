@@ -99,6 +99,17 @@ class App extends Component {
     }
   }
 
+  goBack(){
+    const { dispatch,home } = this.props
+    if( home.recommendMusics.length > 1){
+      browserHistory.goBack()
+    }else{
+      browserHistory.push('/home')
+    }
+
+    
+  }
+
   render() {
     const { dispatch,data,login,krc,time,controll,currentMusic,musicPlayList } = this.props
     const {currentTime } = this.props.time
@@ -125,7 +136,7 @@ class App extends Component {
           <div style={{height:'100%',zIndex:10,display: 'flex',flexDirection: 'column'}}>
 
             <div className="header" style={{backgroundColor:'transparent',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem',borderBottom:'.01rem solid #999'}}>
-              <div onClick={()=>browserHistory.goBack()} style={{display:'flex',flex:1}}>返回</div>
+              <div onClick={()=>this.goBack()} style={{display:'flex',flex:1}}>返回</div>
               <div style={{display:'flex',flex:3,justifyContent: 'center'}}>{ currentMusic.songName }</div>
               <div style={{display:'flex',flex:1}}></div>
             </div>
@@ -204,6 +215,7 @@ function map(state) {
     currentMusic: state.music.currentMusic,
     controll:state.music.controll,
     time:state.music.time,
+    home: state.home.home,
     firstTime:state.music.firstTime
   }
 }
