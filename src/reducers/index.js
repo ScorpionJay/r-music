@@ -18,7 +18,7 @@ const reducers = combineReducers({
   user,
   album,
   music,
-  search
+  search,
 })
 
 export default reducers

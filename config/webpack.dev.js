@@ -91,10 +91,6 @@ module.exports = function (options){
             port:9999,
             // 设置代理
             proxy:{
-                "/api": {
-                    target: "http://localhost:8001",
-                    pathRewrite: {"^/api" : ""}
-                },
                 "/kugou": {
                     target: "http://m.kugou.com",
                     changeOrigin: true,
@@ -105,11 +101,11 @@ module.exports = function (options){
                     changeOrigin: true,
                     pathRewrite: {"^/ad" : ""}
                 },
-                "/musicSearch": {
+                "/mobilecdn": {
                     target: "http://mobilecdn.kugou.com",
                     changeOrigin: true,
-                    pathRewrite: {"^/musicSearch" : ""}
-                }
+                    pathRewrite: {"^/mobilecdn" : ""}
+                },
             }
         }
     }

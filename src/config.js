@@ -13,6 +13,8 @@ if (process.env.NODE_ENV === 'production') {
     musicSearchAPI:'/musicSearch/api/v3/search/song?page=PAGE&pagesize=20&keyword=KEYWORD',
     musicAPI:'/kugou/app/i/getSongInfo.php?cmd=playInfo&hash=HASH&from=mkugou',
     krcAPI: '/kugou/app/i/krc.php?cmd=100&hash=HASH&timelength=TIMELENGTH',
+    searchHotAPI: '/mobilecdn/api/v3/search/hot',
+    searchResultAPI: '/mobilecdn/api/v3/search/song',
   }
 }else{
   Config = {
@@ -25,6 +27,8 @@ if (process.env.NODE_ENV === 'production') {
     playListAPI:'/kugou/plist/list/id/?json=ture',
     musicAPI:'/kugou/app/i/getSongInfo.php?cmd=playInfo&hash=HASH&from=mkugou',
     krcAPI: '/kugou/app/i/krc.php?cmd=100&hash=HASH&timelength=TIMELENGTH',
+    searchHotAPI: '/mobilecdn/api/v3/search/hot',
+    searchResultAPI: '/mobilecdn/api/v3/search/song',
   }
 }
 

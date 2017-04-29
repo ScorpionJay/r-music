@@ -69,6 +69,7 @@
     "http-proxy-middleware": "^0.17.4"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "rc-slider": "^7.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
