@@ -1,15 +1,26 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+/**
+* 导航组件
+*/
+
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 export default class Nav extends Component { 
 
   render() {
+
+    const nav = [
+      {to:'home',name:'发现音乐'},
+      {to:'music',name:'我的音乐'},
+      {to:'friend',name:'朋友'},
+      {to:'account',name:'帐号'}
+    ]
+
     return (
       <nav style={Styles.nav} className='footer'>
-        <Link to="/home" activeClassName="active" style={Styles.tab}><span></span>发现音乐</Link>
-        <Link to="/music" activeClassName="active" style={Styles.tab}><span></span>我的音乐</Link>
-        <Link to="/friend" activeClassName="active" style={Styles.tab}><span></span>朋友</Link>
-        <Link to="/account" activeClassName="active" style={Styles.tab}><span></span>帐号</Link>
+        {
+          nav.map( (item) =>  <Link to={item.to} activeClassName="active" style={Styles.tab}><span></span>{item.name}</Link> )
+        }
       </nav>
     )
   }
@@ -29,8 +40,7 @@ const Styles = {
     flex:1,
     textAlign:'center',
     lineHeight:'60px',
-    textDecoration: 'none',
-    
+    textDecoration: 'none'
   }
 }
 

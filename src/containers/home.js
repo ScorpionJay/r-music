@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { homeAPI,scrollTopAction } from '../actions/home'
+import { homeAction,scrollTopAction } from '../actions/home'
 import Slider from '../components/common/slider'
 import Nav from '../components/common/Nav'
 import RecommendList from '../components/music/recommendList'
@@ -39,7 +39,7 @@ class App extends Component {
       // 计算有问题
       this.refs.container.scrollTop = scrollTop>0 ? scrollTop + this.refs.container.clientHeight / 2 - 50 : 0
     }else{
-      dispatch(homeAPI(data,this.state.page))
+      dispatch(homeAction(data,this.state.page))
     }
   }
 
@@ -58,7 +58,7 @@ class App extends Component {
     
     if( this.refs.container.scrollTop + this.refs.container.clientHeight ===  this.refs.container.scrollHeight){
       // 这里有问题
-      dispatch(homeAPI(data,this.state.page+1))
+      dispatch(homeAction(data,this.state.page+1))
       this.setState({page:this.state.page+1})
     }
   }

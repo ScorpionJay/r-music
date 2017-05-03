@@ -125,7 +125,7 @@ module.exports = {
         * See: https://www.npmjs.com/package/copy-webpack-plugin
         */
         new CopyWebpackPlugin([
-            { from: 'json', to: 'json' },
+            //{ from: 'json', to: 'json' },
             { from: 'images/favicon.ico', to: 'image/favicon.ico' }
         ])
     ]

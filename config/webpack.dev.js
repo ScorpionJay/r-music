@@ -70,18 +70,6 @@ module.exports = function (options){
             }),
             // 打开浏览器
       		new OpenBrowserPlugin({ url: 'http://localhost:9999' }),
-            /*
-            * Plugin: CopyWebpackPlugin 拷贝文件
-            * Description: Copy files and directories in webpack.
-            *
-            * Copies project static assets.
-            *
-            * See: https://www.npmjs.com/package/copy-webpack-plugin
-            */
-            new CopyWebpackPlugin([
-                { from: 'json', to: 'json' },
-                { from: 'images/favicon.ico', to: 'image/favicon.ico' }
-            ])
         ],
         devServer: {
             contentBase: "./src",//本地服务器所加载的页面所在的目录

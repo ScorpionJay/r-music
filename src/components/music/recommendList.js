@@ -13,9 +13,7 @@ export default class MusicList extends Component {
       return (
         <div>
           {
-            this.props.data.length === 1 ?
-              <div></div>
-            : 
+            this.props.data.length === 0 ? '': 
               <div>
                 <div className='recommod'>
                   <span style={{lineHeight: '1.6rem'}}>推荐歌单</span>

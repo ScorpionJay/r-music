@@ -1,4 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+/** 
+* 播放器组件
+*/
+
+import React, { Component, PropTypes } from 'react'
 
 export default class Audio extends Component { 
   

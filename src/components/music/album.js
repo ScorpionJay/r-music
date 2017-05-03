@@ -23,6 +23,7 @@ export default class Album extends Component {
                 <div style={Styles.introName}>{specialname}</div>
             </div>
             {
+              this.props.data.list.length === 0 ? '' :
               this.props.data.list.map((obj,index)=>
                   <Item index={index+1}  {...obj}  addMusic={(music) => this.props.addMusic(music) }  currentHash={this.props.currentHash}/>
               )

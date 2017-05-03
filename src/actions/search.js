@@ -3,7 +3,6 @@ import { spin,spinHidden } from './spin'
 import api from '../api'
 
 import Storage from '../storage'
-import union from 'lodash/union';
 
 export const SEARCH_HOT = 'SEARCH_HOT'
 export const SEARCH_RESULT = 'SEARCH_RESULT'
@@ -45,8 +44,8 @@ export function clearSearchResultAPI(){
 //记录搜索历史，存入localStorage
 function setSearchHistory(keyword){
 	let searchHistory = (Storage.get('searchHistory')||'').split(',');
-	searchHistory = union([keyword],searchHistory)
-	Storage.put('searchHistory',searchHistory);
+	searchHistory = new Set([keyword,...searchHistory])
+	Storage.put('searchHistory',[...searchHistory]);
 
 }
 

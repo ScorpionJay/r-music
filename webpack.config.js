@@ -1,4 +1,6 @@
-// Look in ./config folder for webpack.dev.js
+/**
+* webpack根据环境启动不同的配置文件
+*/
 switch (process.env.NODE_ENV) {
   case 'prod':
   case 'production':

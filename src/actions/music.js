@@ -1,3 +1,7 @@
+/**
+* music action
+*/
+
 import Config from '../config'
 import { spin,spinHidden } from './spin'
 import api from '../api'

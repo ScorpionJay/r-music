@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { homeAPI } from '../actions/home'
 
 class App extends Component {
 
   componentDidMount(){
     const { dispatch } = this.props
-    dispatch(homeAPI())
   }
 
   render() {

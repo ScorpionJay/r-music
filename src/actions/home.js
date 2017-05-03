@@ -1,3 +1,7 @@
+/**
+* home action
+*/
+
 import Config from '../config'
 import { spin,spinHidden } from './spin'
 import api from '../api'
@@ -6,30 +10,10 @@ export const HOME = 'HOME'
 export const RECOMMENDMUSIC = 'RECOMMENDMUSIC'
 export const SCROLLTOP = 'SCROLLTOP'
 
-export const home = (obj) =>{
-	return {
-		type: HOME,
-		obj
-	}
-}
+const home = (obj) =>{ return {type: HOME,obj}}
+const scrollTop = (obj) =>{ return {type: SCROLLTOP,obj}}
 
-export const recommendMusic = (obj) =>{
-	return {
-		type: RECOMMENDMUSIC,
-		obj
-	}
-}
-
-
-export const scrollTop = (obj) =>{
-	return {
-		type: SCROLLTOP,
-		obj
-	}
-}
-
-export function homeAPI(d,page){
-
+export function homeAction(d,page){
 	return async dispatch => {
 	 	dispatch(spin());
 	 	try{

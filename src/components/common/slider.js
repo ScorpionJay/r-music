@@ -1,6 +1,9 @@
+/**
+* 轮播组件
+*/ 
+
 import React, { Component } from 'react'
 import Slider from 'react-slick'
-import { Link } from 'react-router'
 
 export default class SimpleSlider extends Component { 
 
@@ -17,16 +20,22 @@ export default class SimpleSlider extends Component {
     const { data } = this.props
     return (
       <div className='fullSlide'>
-        <Slider {...settings} ref={c=> this.slider =c} >
-          {
-            data.map((item) => <div><SliderItem {...item}/></div>)
-          }
-        </Slider>
+        {
+          data.length === 0 ? '' :
+            <Slider {...settings}  >
+              {
+                data.map((item) => <div><SliderItem {...item}/></div> )
+              }
+            </Slider>
+        }
       </div>
     )
   }
 }
 
+/**
+* 轮播子组件
+*/
 class SliderItem extends Component { 
   render() {
     return (

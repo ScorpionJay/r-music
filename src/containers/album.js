@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import Nav from '../components/common/Nav'
 import Album from '../components/music/album'
-import { albumListAPI } from '../actions/album'
+import { albumListAction } from '../actions/album'
 import Beat from '../components/music/beat'
 import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI } from '../actions/music'
 
@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount(){
     const { dispatch,albumList } = this.props
     if( albumList.info.specialid != this.props.params.id){
-      dispatch(albumListAPI(this.props.params.id))
+      dispatch(albumListAction(this.props.params.id))
     }
   }
 

@@ -1,3 +1,7 @@
+/**
+* 总组件
+*/
+
 import React , {Component } from 'react'
 import { connect } from 'react-redux'
 import Spin from './components/common/Spin'
