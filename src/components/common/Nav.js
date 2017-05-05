@@ -10,7 +10,7 @@ export default class Nav extends Component {
   render() {
 
     const nav = [
-      {to:'home',name:'发现音乐'},
+      {to:'discover',name:'发现音乐'},
       {to:'music',name:'我的音乐'},
       {to:'friend',name:'朋友'},
       {to:'account',name:'帐号'}
@@ -29,17 +29,17 @@ export default class Nav extends Component {
 const Styles = {
   nav:{
     display:'flex',
-    height:60,
+    height:'3.5rem',
     justifyContent:'space-between',
     borderTop:'1px solid #e1e1e1',
-    fontSize: '14px',
+    fontSize: '1rem',
     color: '#fff',
     backgroundColor: '#000'
   },
   tab:{
     flex:1,
     textAlign:'center',
-    lineHeight:'60px',
+    lineHeight:'3.5rem',
     textDecoration: 'none'
   }
 }

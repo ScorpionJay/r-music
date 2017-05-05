@@ -11,10 +11,45 @@ import Play from './containers/play'
 const Routes = {
 	path: '/',
 	component: App,
-	indexRoute :{onEnter: (nextState, replace) => replace('/home')},
+	indexRoute :{onEnter: (nextState, replace) => replace('/discover/recommend')},
 	childRoutes: [
-		{ path: 'home',
-		  component:Home
+		{ path: 'discover',
+		  component:Home,
+		  // 这里需要处理
+		  indexRoute :{onEnter: (nextState, replace) => {
+		  		console.log(nextState)
+		  		replace('/discover/recommend')}
+			},
+		  childRoutes: [
+			{ path: 'recommend',
+			  getComponent (nextState, cb) {
+				require.ensure([], (require)=>{
+					 cb(null, require('./containers/recommend').default)
+				})
+			   }
+			},
+			{ path: 'playlist',
+			  getComponent (nextState, cb) {
+				require.ensure([], (require)=>{
+					 cb(null, require('./containers/playlist').default)
+				})
+			   }
+			},
+			{ path: 'rank',
+			  getComponent (nextState, cb) {
+				require.ensure([], (require)=>{
+					 cb(null, require('./containers/rank').default)
+				})
+			   }
+			},
+			{ path: 'djradio',
+			  getComponent (nextState, cb) {
+				require.ensure([], (require)=>{
+					 cb(null, require('./containers/djradio').default)
+				})
+			   }
+			}
+		  ]
 		},
 		{ path: 'music',
 		  getComponent (nextState, cb) {
