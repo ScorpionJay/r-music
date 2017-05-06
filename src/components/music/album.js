@@ -5,6 +5,8 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
+import MusicItem from './MusicItem'
+
 /**
 * 专辑列表
 */
@@ -22,12 +24,14 @@ export default class Album extends Component {
                 </div>
                 <div style={Styles.introName}>{specialname}</div>
             </div>
-            {
-              this.props.data.list.length === 0 ? '' :
-              this.props.data.list.map((obj,index)=>
-                  <Item index={index+1}  {...obj}  addMusic={(music) => this.props.addMusic(music) }  currentHash={this.props.currentHash}/>
-              )
-            }
+            <div>
+              {
+                this.props.data.list.length === 0 ? '' :
+                this.props.data.list.map((obj,index)=>
+                    <MusicItem index={index} music={obj} currentHash={this.props.currentHash}/>
+                )
+              }
+            </div>
         </div>
       )
   }

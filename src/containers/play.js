@@ -104,7 +104,7 @@ class App extends Component {
     if( home.recommendMusics.length > 1){
       browserHistory.goBack()
     }else{
-      browserHistory.push('/home')
+      browserHistory.push('/')
     }
 
     

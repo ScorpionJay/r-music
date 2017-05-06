@@ -7,6 +7,7 @@ import App from './app';
 import Home from './containers/home'
 import Album from './containers/album'
 import Play from './containers/play'
+import RankInfo from './containers/rankInfo'
 
 const Routes = {
 	path: '/',
@@ -50,6 +51,10 @@ const Routes = {
 			   }
 			}
 		  ]
+		},
+		{
+			path: 'rankinfo/:rankid',
+			component: RankInfo
 		},
 		{ path: 'music',
 		  getComponent (nextState, cb) {

@@ -31,10 +31,10 @@ class App extends Component {
           browserHistory.push('/discover/playlist')
           break;
         case 2:
-          browserHistory.push('/discover/djradio')
+          browserHistory.push('/discover/rank')
           break;
         case 3:
-          browserHistory.push('/discover/rank')
+          browserHistory.push('/discover/djradio')
           break;
       }
     };
