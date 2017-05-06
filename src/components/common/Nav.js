@@ -3,17 +3,17 @@
 */
 
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export default class Nav extends Component { 
 
   render() {
 
     const nav = [
-      {to:'discover',name:'发现音乐'},
-      {to:'music',name:'我的音乐'},
-      {to:'friend',name:'朋友'},
-      {to:'account',name:'帐号'}
+      {to:`/discover/recommend`,name:'发现音乐'},
+      {to:'/music',name:'我的音乐'},
+      {to:'/friend',name:'朋友'},
+      {to:'/account',name:'帐号'}
     ]
 
     return (

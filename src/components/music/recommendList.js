@@ -2,7 +2,7 @@
 * 推荐歌单组件
 */
 import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { browserHistory } from 'react-router'
 
 /**
@@ -45,14 +45,14 @@ class MusicItem extends Component {
       const {specialname,imgurl,intro,playcount,specialid} = this.props.data;
       const imgurl2 = imgurl.replace('{size}',400);
       return (
-        <div style={Styles.containerItem} onClick={()=>this.goAlbum()}>
+        <Link style={Styles.containerItem} to={`/album/${this.props.data.specialid}`}>
           <div style={Styles.item}>
             <div style={Styles.count}>{ parseInt(playcount/10000) + '万'}</div>
             <img src={imgurl2} style={Styles.img} />
             <div style={Styles.name}>{specialname}</div>
           </div>
           
-        </div>
+        </Link>
       )
   }
 }

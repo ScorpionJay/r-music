@@ -21,7 +21,7 @@ class App extends Component {
 
   async componentDidMount(){
     const { dispatch,currentMusic,firstTime } = this.props
-    const id = this.props.params.id
+    const id = this.props.match.params.id
     if( id && currentMusic.hash !== id){
         await dispatch(currentMusicAPI(id,firstTime))
     }
@@ -102,9 +102,9 @@ class App extends Component {
   goBack(){
     const { dispatch,home } = this.props
     if( home.recommendMusics.length > 1){
-      browserHistory.goBack()
+      this.props.history.goBack()
     }else{
-      browserHistory.push('/home')
+      this.props.history.push('/discover')
     }
 
     

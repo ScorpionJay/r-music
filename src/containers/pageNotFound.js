@@ -1,12 +1,12 @@
 import React, { Component} from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export default class PageNotFound extends Component {
   render() {
     return (
           <div style={Styles.container}>
                 <p>您访问的页面不存在</p>
-                <Link to="/" style={Styles.back}>返回首页</Link>
+                <Link to="/discover" style={Styles.back}>返回首页</Link>
           </div>
     )
   }

@@ -4,10 +4,15 @@ import { homeAction,scrollTopAction } from '../actions/home'
 import Slider from '../components/common/slider'
 import Nav from '../components/common/Nav'
 import RecommendList from '../components/music/recommendList'
-import { Link } from 'react-router'
+import {  BrowserRouter as Router,
+  Route,Link,Redirect } from 'react-router-dom'
 import Beat from '../components/music/beat'
 import Search from '../components/music/search'
-import { browserHistory } from 'react-router'
+
+import Recommend from './recommend'
+import djradio from './djradio'
+import playlist from './playlist'
+import rank from './rank'
 
 class App extends Component {
 
@@ -25,16 +30,16 @@ class App extends Component {
       });
       switch(value) {
         case 0:
-          browserHistory.push('/discover/recommend')
+          this.props.history.push('/discover/recommend')
           break;
         case 1:
-          browserHistory.push('/discover/playlist')
+          this.props.history.push('/discover/playlist')
           break;
         case 2:
-          browserHistory.push('/discover/djradio')
+          this.props.history.push('/discover/rank')
           break;
         case 3:
-          browserHistory.push('/discover/rank')
+          this.props.history.push('/discover/djradio')
           break;
       }
     };
@@ -49,6 +54,13 @@ class App extends Component {
 
   componentDidMount(){
     const { dispatch,data,scrollTop } = this.props
+
+    console.log(this.props.history)
+
+    if( this.props.history.location.pathname === '/discover'  || this.props.history.location.pathname === '/' ){
+      this.props.history.replace('/discover/recommend')
+    }
+
     if( data.recommendMusics.length > 1){
       // 计算有问题
       //this.refs.container.scrollTop = scrollTop>0 ? scrollTop + this.refs.container.clientHeight / 2 - 50 : 0
@@ -78,7 +90,7 @@ class App extends Component {
   // }
 
   gotoSearch(){
-     browserHistory.push('search')
+     // browserHistory.push('search')
   }
 
   render() {
@@ -109,7 +121,11 @@ class App extends Component {
             <div className="highlight" style={{transform:`translateX(${index}00%)`}}></div>
         </div>
         
-        {this.props.children}
+       
+        <Route  path={`${this.props.match.url}/recommend`} component={Recommend} />
+        <Route  path={`${this.props.match.url}/djradio`} component={djradio} />
+        <Route  path={`${this.props.match.url}/playlist`} component={playlist} />
+        <Route  path={`${this.props.match.url}/rank`} component={rank} />
 
         <Nav/>
 
