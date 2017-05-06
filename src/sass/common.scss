@@ -117,3 +117,24 @@ html,body {
   border: solid 3px #d2a5a5  !important;
   background-color: rgb(206, 61, 62) !important;
 }
+
+
+.rank{
+    width: 16px;
+    height: 16px;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    margin-right: .3rem;
+}
+.top1{
+    background: #ff3333;
+}
+.top2{
+    background: #ff6666;
+}
+.top3{
+    background: #ff9999;
+}

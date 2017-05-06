@@ -15,7 +15,7 @@ export function rankListAction(){
 		dispatch(spin());
 		try{
 			let data = await api( Config.rankListAPI );
-			dispatch(rankList(data.rank.list));
+			dispatch(rankList(data.data.info));
 			dispatch(spinHidden());
 		} catch(error) {
 			console.log(error);

@@ -94,6 +94,11 @@ module.exports = function (options){
                     changeOrigin: true,
                     pathRewrite: {"^/mobilecdn" : ""}
                 },
+                "/cdnbj": {
+                    target: "http://mobilecdnbj.kugou.com",
+                    changeOrigin: true,
+                    pathRewrite: {"^/cdnbj" : ""}
+                },
             }
         }
     }

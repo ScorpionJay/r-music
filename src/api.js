@@ -31,6 +31,7 @@ export default async ( url, method = 'get', data = {} ,headers = {'Content-Type'
 
     try{
       let response = await fetch(url,requestConfig);
+      
       // 这里处理的感觉还不是太好
       // token 过期
       if( response.status === 401 ){

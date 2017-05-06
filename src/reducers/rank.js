@@ -12,6 +12,11 @@ function list(state = [], action){
 let infoVo = {
   info: {
     imgurl: '',
+    songinfo: [
+        {
+          "songname": "庄心妍 - 我不相信"
+        }
+      ],
   },
   songs: {
     list: []
