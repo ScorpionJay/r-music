@@ -1,90 +1,89 @@
+/**
+* 排行榜
+*/
+
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { homeAction,scrollTopAction } from '../actions/home'
-import Slider from '../components/common/slider'
-import Nav from '../components/common/Nav'
-import RecommendList from '../components/music/recommendList'
-import { Link } from 'react-router'
-import Beat from '../components/music/beat'
-import Search from '../components/music/search'
-import { browserHistory } from 'react-router'
+import { rankListAction } from '../actions/rank'
 
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      index: 0,
-      page:1
-    };
-
-    this.handleChangeTabs = (value) => () => {
-      this.setState({
-        index: value,
-      });
-    };
-
-    this.handleChangeIndex = (index) => {
-      this.setState({
-        index,
-      });
-    };
-
-  }
+class Rank extends Component {
 
   componentDidMount(){
-    const { dispatch,data,scrollTop } = this.props
-    
-  }
-
-  // 记录当前div滚动高度，以便返回时复原
-  scrollTopHandler(){
-    const { dispatch } = this.props
-    dispatch(scrollTopAction(this.refs.container.scrollTop))
-  }
-
-  scroll(){
     const { dispatch,data } = this.props
-    // console.log('offsetHeight',this.refs.container.offsetHeight)
-    // console.log('scrollHeight',this.refs.container.scrollHeight)
-    // console.log('clientHeight',this.refs.container.clientHeight)
-    // console.log('scrollTop',this.refs.container.scrollTop)    
-    
-    if( this.refs.container.scrollTop + this.refs.container.clientHeight ===  this.refs.container.scrollHeight){
-      // 这里有问题
-      dispatch(homeAction(data,this.state.page+1))
-      this.setState({page:this.state.page+1})
+    if( data.length === 0 ){
+      dispatch(rankListAction())
     }
   }
 
-  gotoSearch(){
-     browserHistory.push('search')
-  }
-
   render() {
-    const { dispatch,data,login,controll} = this.props
-    const {
-      index,
-    } = this.state;
+    const { data } = this.props
     return (
-      <div className='container'>
+        <div className="container">
+        {data.map((obj) => 
+          <div onClick={()=>this.props.history.push(`/rankinfo/${obj.rankid}`)} style={{display:'flex',flexFlow:'row',marginBottom:'0.8rem'}}>
+            <div style={{width:'25%'}}><img src={obj.imgurl.replace('{size}', '400')} style={{width:'100%',marginTop:'0.1rem'}}/></div>
 
-        rank
+            <div style={{display:'flex',width:'75%',justifyContent:'space-between',borderBottom:'solid 1px #aaa'}}>
 
+              <div style={{display:'flex',flexFlow:'column',justifyContent:'space-around',padding:'0.8rem',width:'75%'}}>
+                <div style={{fontSize:'1.1rem',color:'#222'}}>{obj.rankname}</div>
+                {obj.songinfo.map( (item,index) =>
+                  <div style={{color:'#555',display:'flex',alignItems:'center'}}>
+                    <div className={`rank top${index+1}`}>{index+1}</div>
+                    <div style={{width:'100%',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',fontSize:'1rem'}}>{item.songname}</div>
+                  </div>
+                )}
+              </div>
 
+              <div className="arrow-right" style={{alignSelf:'center',borderColor:'rgb(84,170,222)',marginRight:'1.1rem'}}></div>
+            </div>
+
+          </div>
+        )}
       </div>
+
     )
   }
 }
 
 function map(state) {
   return {
-    data: state.home.home,
-    scrollTop: state.home.scrollTop,
-    login: state.login.login,
-    controll:state.music.controll
+    data: state.rank.list
   }
 }
 
-export default connect(map)(App)
+const style = {
+  item:{
+    display:'flex',
+    padding:'1rem'
+  },
+  left:{
+    flex:2
+  },
+  img:{
+    width:'100%'
+  },
+  content:{
+    display:'flex',
+    flexDirection:'column',
+    flex:5,
+    padding:'.6rem'
+  },
+  rankname:{
+    fontSize:'1.3rem'
+  },
+  songname:{
+    width:'13rem',
+    textOverflow:'ellipsis',
+    whiteSpace:'nowrap',
+     overflow:'hidden'
+  },
+  right:{
+    display:'flex',
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center'
+  }
+}
+
+export default connect(map)(Rank)

@@ -74,7 +74,7 @@ class App extends Component {
     return (
 
         <div  className='container' onScroll={()=>this.scroll() } ref='container'>
-            <RecommendList data={data.recommendMusics} scrollTop={()=>this.scrollTopHandler()}/>
+            <RecommendList data={data.recommendMusics} scrollTop={()=>this.scrollTopHandler()}  history={this.props.history} />
         </div>
 
 

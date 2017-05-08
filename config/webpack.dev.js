@@ -76,6 +76,7 @@ module.exports = function (options){
             historyApiFallback: true,//不跳转
             inline: true,//实时刷新
             host: '0.0.0.0',
+            disableHostCheck: true, // 解决Invalid Host Header
             port:9999,
             // 设置代理
             proxy:{

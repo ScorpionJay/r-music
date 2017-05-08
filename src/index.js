@@ -11,7 +11,8 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom'
 
 const store = configureStore()
@@ -30,9 +31,7 @@ import account from './containers/account'
 import search from './containers/search'
 import album from './containers/album'
 import play from './containers/play'
-
-
-console.log(history)
+import rankinfo from './containers/rankinfo'
 
 // 渲染
 render(
@@ -41,16 +40,19 @@ render(
    <Router>
     <Switch className='root'>
       <Route  path="/discover" component={Home} />	
-	  <Route  path="/music" component={music} />
-	  <Route  path="/friend" component={friend} />
-	  <Route  path="/account" component={account} />
-	  <Route  path="/search" component={search} />
-	  <Route  path="/album/:id" component={album} />
-	  <Route  path="/play/:id" component={play} />
-	  <Route component={NoMatch}/>
+  	  <Route  path="/music" component={music} />
+  	  <Route  path="/friend" component={friend} />
+  	  <Route  path="/account" component={account} />
+  	  <Route  path="/search" component={search} />
+  	  <Route  path="/album/:id" component={album} />
+  	  <Route  path="/play/:id" component={play} />
+  	  <Route  path="/play" component={play} />
+      <Route  path="/rankinfo/:rankid" component={rankinfo} />
+  	  <Route component={Home}/>
      </Switch> 
   </Router>
   </App>
   </Provider>,
   document.getElementById('root')
 )
+

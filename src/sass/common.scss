@@ -7,6 +7,7 @@ a{
 html{
     height:100%;
     background-color: #515363;
+    color: #444
 }
 body {
     height:100%;
@@ -14,7 +15,7 @@ body {
     max-width: 640px;/* 对于pc最大宽度*/
     margin: 0 auto;
     box-shadow: 0 0 160px 0 #5c99e7;
-    // font-family: cursive;
+    font-family: cursive;
  }
 .root {
     display: flex;
@@ -38,6 +39,7 @@ body {
     width:100%;
     -webkit-overflow-scrolling:touch;
 }
+.container::-webkit-scrollbar {display:none}
 .footer {
     display: flex;
     background-color:#fff;
@@ -54,7 +56,7 @@ body {
     color:#666
 }    
 
-.footer .active{
+.footer .active a{
     color:#fff
 }    
 
@@ -116,4 +118,43 @@ html,body {
 .rc-slider-handle{
   border: solid 3px #d2a5a5  !important;
   background-color: rgb(206, 61, 62) !important;
+}
+
+
+@keyframes ripple {
+  to {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+.ripple {
+  position: absolute;
+  background: rgba(0,0,0,.15);
+  border-radius: 100%;
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple .50s ease-out;
+}
+
+
+
+.rank{
+    width: 1rem;
+    height: 1rem;
+    color: #fff;
+    border-radius: 1rem;
+    font-size: .6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: .3rem;
+}
+.top1{
+    background: rgb(211,45,30);
+}
+.top2{
+    background: rgb(233,128,48);
+}
+.top3{
+    background: rgb(243,177,62);
 }

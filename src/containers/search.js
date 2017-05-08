@@ -42,12 +42,9 @@ class Search extends Component {
   }
 
   toPlay(hash){
-    browserHistory.push('/play/' + hash)
+    this.props.history.push('/play/' + hash)
   }
 
-  goHome(){
-    browserHistory.push('/')
-  }
 
   render() {
     const { dispatch,controll,search } = this.props;
@@ -59,7 +56,7 @@ class Search extends Component {
 
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
           
-          <span onClick={()=>browserHistory.goBack()}>返回</span>
+          <span onClick={()=>this.props.history.goBack()}>返回</span>
           <div>
             <input placeholder="搜索音乐" ref="keyword" style={Styles.input}/>
             <span style={{color:'#777',marginLeft:'-1.2rem'}} onClick={()=>this.clear()}>×</span>
@@ -125,17 +122,16 @@ const Styles = {
   labels: {
     display:'flex',
     flexFlow:'row wrap',
-    justifyContent:'space-around',
+    justifyContent:'flex-start',
     margin: '1rem 0rem',
   },
   label: {
     padding: '.5rem',
-    width: '6rem',
     display: 'flex',
     justifyContent: 'center',
     border: '1px solid #bbb',
     borderRadius: '2rem',
-    marginTop: '.5rem',
+    margin: '.5rem',
   },
   resultItem: {
     padding: '1rem',

@@ -45,7 +45,7 @@ export function clearSearchResultAPI(){
 function setSearchHistory(keyword){
 	let searchHistory = (Storage.get('searchHistory')||'').split(',');
 	searchHistory = new Set([keyword,...searchHistory])
-	Storage.put('searchHistory',[...searchHistory]);
+	Storage.put('searchHistory',[...searchHistory].slice(0,10));
 
 }
 

@@ -142,7 +142,7 @@ class App extends Component {
             </div>
 
             
-              <div className="container" style={{overflowY: 'hidden',textAlign:'center',color:'#aaa',padding:'3rem 0',fontSize:'1.2rem'}} onClick={()=>this.setState({playList : false})} >
+              <div className="container" style={{overflowY: 'auto',textAlign:'center',color:'#aaa',padding:'3rem 0',fontSize:'1.2rem'}} onClick={()=>this.setState({playList : false})} >
                 {
                   currentMusic.krc.map((item)=> 
                     <div style={ Object.assign( {transform: 'translateY('+  (15-s.index*3.3)  +'rem)',transition: 'transform .5s ease',padding:'1rem 0'}, s.time === item.time ? {color:'#fff'} : {} )} >

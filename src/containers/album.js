@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import { browserHistory } from 'react-router'
 import Nav from '../components/common/Nav'
 import Album from '../components/music/album'
 import { albumListAction } from '../actions/album'
@@ -11,8 +10,6 @@ import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI } from '../act
 class App extends Component {
 
   back(){
-     
-      console.log(this.props.history)
       this.props.history.goBack()
   }
 
@@ -43,7 +40,7 @@ class App extends Component {
         </div>
         
         <div className="container">
-          <Album data={albumList} addMusic={(m) => this.musicBoxAdd(m)} currentHash={currentMusic.hash}/>
+          <Album data={albumList} addMusic={(m) => this.musicBoxAdd(m)} currentHash={currentMusic.hash} history={this.props.history}/>
         </div>
 
         <Nav/>
