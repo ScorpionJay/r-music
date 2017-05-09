@@ -33,12 +33,12 @@ class App extends Component {
 
             <div style={{display:'flex',width:'75%',justifyContent:'space-between',borderBottom:'solid 1px #aaa'}}>
 
-              <div style={{display:'flex',flexFlow:'column',justifyContent:'space-around',padding:'0.8rem'}}>
+              <div style={{display:'flex',flexFlow:'column',justifyContent:'space-around',padding:'0.8rem',width:'75%'}}>
                 <div style={{fontSize:'1.1rem',color:'#222'}}>{obj.rankname}</div>
                 {obj.songinfo.map( (item,index) =>
                   <div style={{color:'#555',display:'flex',alignItems:'center'}}>
                     <div className={`rank top${index+1}`}>{index+1}</div>
-                    <div>{item.songname}</div>
+                    <div style={{width:'100%',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',fontSize:'1rem'}}>{item.songname}</div>
                   </div>
                 )}
               </div>
