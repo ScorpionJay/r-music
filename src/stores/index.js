@@ -9,6 +9,12 @@ import reducers from '../reducers/index'
 import { login } from '../actions/login'
 import storage  from '../storage'
 
+import { routerMiddleware,push } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
+const history = createHistory()
+const middleware = routerMiddleware(history)
+
+
 export default function(initialState) {
 	let createStoreWithMiddleware
 
@@ -17,10 +23,12 @@ export default function(initialState) {
 		createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 	}else{
 		const logger = createLogger();
-		createStoreWithMiddleware = applyMiddleware(thunk,logger)(createStore);
+		createStoreWithMiddleware = applyMiddleware(thunk,middleware,logger)(createStore);
 	}
 	let store = createStoreWithMiddleware(reducers, initialState);
 	// get token from storage
 	store.dispatch(login(storage.get('token')));
+	
 	return store;
 };
+

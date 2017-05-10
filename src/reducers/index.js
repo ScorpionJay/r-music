@@ -10,6 +10,8 @@ import  music from './music'
 import  search from './search'
 import  rank from './rank'
 
+import { routerReducer } from 'react-router-redux'
+
 const reducers = combineReducers({
   home,
   login,
@@ -20,7 +22,8 @@ const reducers = combineReducers({
   album,
   music,
   search,
-  rank
+  rank,
+  router: routerReducer
 })
 
 export default reducers

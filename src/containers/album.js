@@ -43,7 +43,6 @@ class App extends Component {
           <Album data={albumList} addMusic={(m) => this.musicBoxAdd(m)} currentHash={currentMusic.hash} history={this.props.history}/>
         </div>
 
-        <Nav/>
 
       </div>
     )

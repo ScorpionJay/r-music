@@ -14,6 +14,8 @@ import djradio from './djradio'
 import playlist from './playlist'
 import rank from './rank'
 
+import { push } from 'react-router-redux'
+
 const navArray = ['个性推荐','歌单','排行榜','主播电台']
 
 class App extends Component {
@@ -44,7 +46,7 @@ class App extends Component {
 
     this.handleChangeTabs = (value) => () => {
 
-
+const { dispatch} = this.props
       this.setState({
         index: value,
       });
@@ -53,6 +55,7 @@ class App extends Component {
           this.setState({flag0:true})
           setTimeout(()=> this.setState({flag0:false}),750) 
           this.props.history.push('/discover/recommend')
+          // dispatch(push('/discover/recommend'))  why not working???
           break;
         case 1:
          this.setState({flag1:true})
