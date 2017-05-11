@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Nav from '../components/common/Nav'
 import Album from '../components/music/album'
 import { albumListAction } from '../actions/album'
 import Beat from '../components/music/beat'
@@ -43,7 +42,6 @@ class App extends Component {
           <Album data={albumList} addMusic={(m) => this.musicBoxAdd(m)} currentHash={currentMusic.hash} history={this.props.history}/>
         </div>
 
-        <Nav/>
 
       </div>
     )

@@ -13,7 +13,7 @@ class App extends Component {
 
   componentDidMount(){
     const { dispatch,data} = this.props
-    if( !data.recommendMusics.length > 1){
+    if( !data.recommendMusics.length > 0){
      dispatch(homeAction(data,0))
     }
   }

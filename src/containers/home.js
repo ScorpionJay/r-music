@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { homeAction,scrollTopAction } from '../actions/home'
-import Slider from '../components/common/slider'
+import { discoverTabAction } from '../actions/router'
 import Nav from '../components/common/Nav'
-import RecommendList from '../components/music/recommendList'
 import {  BrowserRouter as Router,
   Route,Link,Redirect,Switch } from 'react-router-dom'
 import Beat from '../components/music/beat'
@@ -18,9 +16,13 @@ const navArray = ['个性推荐','歌单','排行榜','主播电台']
 
 class App extends Component {
 
-
   constructor(props) {
     super(props);
+    const { dispatch,data,router,history } = this.props
+    if( router !== '' ){
+      history.replace(router)
+    }
+
     let index
     switch(this.props.history.location.pathname) {
         case '/discover/recommend':
@@ -35,15 +37,16 @@ class App extends Component {
         case '/discover/djradio':
           index = 3
           break;
-      }
-
+    }
+    
     this.state = {
-      index: index,
-      page:1
+      page:1,
+      index
     };
 
     this.handleChangeTabs = (value) => () => {
 
+      const { dispatch } = this.props
 
       this.setState({
         index: value,
@@ -53,21 +56,25 @@ class App extends Component {
           this.setState({flag0:true})
           setTimeout(()=> this.setState({flag0:false}),750) 
           this.props.history.push('/discover/recommend')
+          dispatch(discoverTabAction('/discover/recommend'))
           break;
         case 1:
          this.setState({flag1:true})
           setTimeout(()=> this.setState({flag1:false}),750) 
           this.props.history.push('/discover/playlist')
+          dispatch(discoverTabAction('/discover/playlist'))
           break;
         case 2:
          this.setState({flag2:true})
           setTimeout(()=> this.setState({flag2:false}),750) 
           this.props.history.push('/discover/rank')
+          dispatch(discoverTabAction('/discover/rank'))
           break;
         case 3:
          this.setState({flag3:true})
           setTimeout(()=> this.setState({flag3:false}),750) 
           this.props.history.push('/discover/djradio')
+          dispatch(discoverTabAction('/discover/djradio'))
           break;
       }
     };
@@ -78,21 +85,6 @@ class App extends Component {
       });
     };
 
-  }
-
-  componentDidMount(){
-    const { dispatch,data,scrollTop } = this.props
-
-    // if( this.props.history.location.pathname.indexOf('/discover') > 0 ){
-    //   this.props.history.replace('/discover/recommend')
-    // }
-
-    if( data.recommendMusics.length > 1){
-      // 计算有问题
-      //this.refs.container.scrollTop = scrollTop>0 ? scrollTop + this.refs.container.clientHeight / 2 - 50 : 0
-    }else{
-      dispatch(homeAction(data,this.state.page))
-    }
   }
 
   render() {
@@ -155,7 +147,8 @@ function map(state) {
     data: state.home.home,
     scrollTop: state.home.scrollTop,
     login: state.login.login,
-    controll:state.music.controll
+    controll:state.music.controll,
+    router:state.router.discover
   }
 }
 

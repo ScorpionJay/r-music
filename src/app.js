@@ -9,6 +9,29 @@ import Message from './components/common/Message'
 import Audio from './components/music/audio'
 import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI,changeMusicAPI } from './actions/music'
 
+
+import Home from './containers/home'
+import Album from './containers/album'
+import Recommend from './containers/recommend'
+import djradio from './containers/djradio'
+import playlist from './containers/playlist'
+import rank from './containers/rank'
+import NoMatch from './containers/pageNotFound'
+import music from './containers/music'
+import friend from './containers/friend'
+import account from './containers/account'
+import search from './containers/search'
+import album from './containers/album'
+import play from './containers/play'
+import rankinfo from './containers/rankinfo'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom'
+
 class App extends Component{
 
 	getCur(t){
@@ -36,13 +59,18 @@ class App extends Component{
 		dispatch(controllAPI('pause'))
 	}
 	 
+	componentDidMount(){
+	    if( this.props.history.location.pathname ===  '/' ){
+	      this.props.history.replace('/discover/recommend')
+	    }
+	}
+
 	render(){
 		const {currentMusic,time,controll,spin,message} = this.props;
 		return (
 			<div className='root'>
 				<Spin spin={spin}/>
 				<Message data={message}/>
-				<div className='root'>{this.props.children}</div>
 
 				<Audio data={currentMusic} 
 					getCur={(e)=>this.getCur(e)}
@@ -51,7 +79,18 @@ class App extends Component{
 					changeMusic={()=>this.changeMusic()}
 					controllMusic = {() => this.controllMusic()}
 					controll={controll} />
-			
+
+				<Switch className='root'>
+					  <Route  path="/discover" component={Home} />
+					  <Route  path="/music" component={music} />
+				  	  <Route  path="/friend" component={friend} />
+				  	  <Route  path="/account" component={account} />
+				  	  <Route  path="/search" component={search} />
+				  	  <Route  path="/album/:id" component={album} />
+				  	  <Route  path="/play/:id" component={play} />
+				  	  <Route  path="/play" component={play} />
+				      <Route  path="/rankinfo/:rankid" component={rankinfo} />
+				</Switch>
 			</div>
 		)
 	};
