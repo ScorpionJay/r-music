@@ -15,15 +15,19 @@ class App extends Component {
      const duration = currentMusic.duration
      this.state = {
       slider: duration ? currentTime / duration *100 : 0  ,
-      playList:false
+      playList:false,
     };
   }
 
-  async componentDidMount(){
+  componentDidMount(){
+    this.setState({
+      krcHeight:this.refs.krcContainer.offsetHeight/2,
+      krcItem: this.refs.krcItem.offsetHeight
+    })
     const { dispatch,currentMusic,firstTime } = this.props
     const id = this.props.match.params.id
     if( id && currentMusic.hash !== id){
-        await dispatch(currentMusicAPI(id,firstTime))
+        dispatch(currentMusicAPI(id,firstTime))
     }
   }
 
@@ -142,10 +146,10 @@ class App extends Component {
             </div>
 
             
-              <div className="container" style={{overflowY: 'auto',textAlign:'center',color:'#aaa',padding:'3rem 0',fontSize:'1.2rem'}} onClick={()=>this.setState({playList : false})} >
+              <div className="container" style={{overflowY: 'hidden',textAlign:'center',color:'#aaa',padding:'3rem 0',fontSize:'1.2rem'}} onClick={()=>this.setState({playList : false})} ref='krcContainer'>
                 {
-                  currentMusic.krc.map((item)=> 
-                    <div style={ Object.assign( {transform: 'translateY('+  (15-s.index*3.3)  +'rem)',transition: 'transform .5s ease',padding:'1rem 0'}, s.time === item.time ? {color:'#fff'} : {} )} >
+                  currentMusic.krc.map( item => 
+                    <div key={item.index} style={ Object.assign( {transform: 'translateY('+  (this.state.krcHeight-(s.index+1)*this.state.krcItem)  +'px)',transition: 'transform .5s ease',padding:'1rem 0',height:'2rem'}, s.time === item.time ? {color:'#fff'} : {} )} ref='krcItem'>
                       {item.str}
                     </div>
                   )

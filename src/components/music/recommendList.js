@@ -22,7 +22,7 @@ export default class MusicList extends Component {
                 </div>
                 <div style={Styles.container}>
                   {
-                    this.props.data.map((obj)=> <MusicItem data={obj} scrollTop={this.props.scrollTop}  history={this.props.history} /> )
+                    this.props.data.map( obj => <MusicItem key={obj.specialid} data={obj} scrollTop={this.props.scrollTop}   history={this.props.history} /> )
                   }
                 </div>
               </div>
