@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { discoverTabAction } from '../actions/router'
 import Nav from '../components/common/Nav'
-import {  BrowserRouter as Router,
-  Route,Link,Redirect,Switch } from 'react-router-dom'
+import { Route,Switch,Link } from 'react-router-dom'
 import Beat from '../components/music/beat'
 import Search from '../components/music/search'
 

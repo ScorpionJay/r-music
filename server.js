@@ -3,7 +3,7 @@ const path = require('path')
 const port = process.env.PORT || 18080
 const app = express()
 const proxy = require('http-proxy-middleware')
-const compression = require('compression');
+const compression = require('compression')
 
 app.use(compression()); //use compression 
 // serve static assets normally

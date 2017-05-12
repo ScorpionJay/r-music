@@ -1,13 +1,19 @@
+/**
+* request api
+* 封装的请求api,使用fetch，如果不支持则使用ajax
+*/
+
 import async from 'async'
 require("babel-polyfill")
 import Storage from './storage'
 
-export default async ( url, method = 'get', data = {} ,headers = {'Content-Type':'application/json'} ) => {
+export default async ( url, method = 'get', data = {} ,headers = {} ) => {
   if(window.fetch){//浏览器支持fetch
       let requestConfig = {
       method:method,
       headers:{
         'Accept':'application/json',
+        'Content-Type':'application/json'
       }
     }
 
@@ -94,7 +100,6 @@ export default async ( url, method = 'get', data = {} ,headers = {'Content-Type'
                   break;
               }
             }
-            console.log(obj)
             resolve(obj);
           } else {
             //reject()

@@ -9,14 +9,7 @@ import Message from './components/common/Message'
 import Audio from './components/music/audio'
 import { musicBoxAddAPI,currentMusicAPI,changetimeAPI,controllAPI,changeMusicAPI } from './actions/music'
 
-
 import Home from './containers/home'
-import Album from './containers/album'
-import Recommend from './containers/recommend'
-import djradio from './containers/djradio'
-import playlist from './containers/playlist'
-import rank from './containers/rank'
-import NoMatch from './containers/pageNotFound'
 import music from './containers/music'
 import friend from './containers/friend'
 import account from './containers/account'
@@ -24,12 +17,10 @@ import search from './containers/search'
 import album from './containers/album'
 import play from './containers/play'
 import rankinfo from './containers/rankinfo'
+
 import {
-  BrowserRouter as Router,
   Route,
-  Link,
   Switch,
-  Redirect
 } from 'react-router-dom'
 
 class App extends Component{

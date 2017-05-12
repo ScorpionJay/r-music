@@ -1,4 +1,6 @@
-const serviceUrl = 'http://127.0.0.1:1026/' 
+/**
+* config
+*/
 
 let Config = {}
 

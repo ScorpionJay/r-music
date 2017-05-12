@@ -4,27 +4,17 @@
 
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import routers from './routers'
 import configureStore from './stores'
+import { BrowserRouter,Route } from 'react-router-dom'
 import './sass/main.scss'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  Redirect
-} from 'react-router-dom'
-
-const store = configureStore()
-
 import App from './app'
 
 // 渲染
 render(
-  <Provider store={store}>
-    <Router>
+  <Provider store={configureStore()}>
+    <BrowserRouter>
       <Route  path="/" component={App} />
-    </Router>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 )

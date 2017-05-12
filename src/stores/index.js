@@ -1,5 +1,5 @@
 /**
-* store
+* redux store
 */
 
 import { createStore, applyMiddleware } from 'redux'
@@ -11,7 +11,6 @@ import storage  from '../storage'
 
 export default function(initialState) {
 	let createStoreWithMiddleware
-
 	// 判断环境是否logger
 	if (process.env.NODE_ENV === 'production') {
 		createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
